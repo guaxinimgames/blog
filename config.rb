@@ -1,0 +1,12 @@
+$THEME = 'bones'
+$PATH = 'www/wp-content/themes/'+ $THEME +'/library/'
+http_path = $THEME + '/www/'
+css_dir = $PATH + 'min/css/'
+sass_dir = $PATH + 'scss/'
+images_dir = $PATH +'images/'
+fonts_dir = $PATH +'fonts/'
+javascripts_dir = $PATH +'js'
+relative_assets = true
+line_comments = false
+output_style = :compressed
+preferred_syntax = :scss
