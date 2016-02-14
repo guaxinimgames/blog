@@ -42,34 +42,10 @@ function stargazer_custom_header_setup() {
 	register_default_headers(
 		array(
 			'horizon' => array(
-				'url'           => '%s/images/headers/horizon.jpg',
-				'thumbnail_url' => '%s/images/headers/horizon-thumb.jpg',
+				'url'           => '%s/images/headers/gxn-1.jpg',
+				'thumbnail_url' => '%s/images/headers/gxn-1.jpg',
 				// Translators: Header image description.
 				'description'   => __( 'Horizon', 'stargazer' )
-			),
-			'orange-burn' => array(
-				'url'           => '%s/images/headers/orange-burn.jpg',
-				'thumbnail_url' => '%s/images/headers/orange-burn-thumb.jpg',
-				// Translators: Header image description.
-				'description'   => __( 'Orange Burn', 'stargazer' )
-			),
-			'planets-blue' => array(
-				'url'           => '%s/images/headers/planets-blue.jpg',
-				'thumbnail_url' => '%s/images/headers/planets-blue-thumb.jpg',
-				// Translators: Header image description.
-				'description'   => __( 'Blue Planets', 'stargazer' )
-			),
-			'planet-burst' => array(
-				'url'           => '%s/images/headers/planet-burst.jpg',
-				'thumbnail_url' => '%s/images/headers/planet-burst-thumb.jpg',
-				// Translators: Header image description.
-				'description'   => __( 'Planet Burst', 'stargazer' )
-			),
-			'space-splatters' => array(
-				'url'           => '%s/images/headers/space-splatters.jpg',
-				'thumbnail_url' => '%s/images/headers/space-splatters-thumb.jpg',
-				// Translators: Header image description.
-				'description'   => __( 'Space Splatters', 'stargazer' )
 			),
 		)
 	);
