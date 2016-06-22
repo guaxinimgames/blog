@@ -1,0 +1,9 @@
+mixin searchbox
+	//- attributes == {class: "navbar-right"}
+	form.navbar-form(method='get', action!="<?php echo esc_url( home_url( '/' ) ); ?>", role='search')&attributes(attributes)
+		label.sr-only(for='navbar-search')
+			- _e( 'Search:', 'odin' );
+		.form-group
+			input#navbar-search.form-control(type='search', value!='<?php echo get_search_query(); ?>', name='s', placeholder!="<?php echo _e( 'Search', 'odin' ); ?>")
+		button.btn.btn-default(type='submit',title!="<?php echo _e( 'Search', 'odin' ) ?>")
+			i.glyphicon.glyphicon-search

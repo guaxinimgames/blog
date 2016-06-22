@@ -1,0 +1,12 @@
+{
+    "name": "root/inc",
+    "require": {
+        "php-curl-class/php-curl-class": "^4.11"
+    },
+    "authors": [
+        {
+            "name": "Luciano Filho",
+            "email": "luciano@tinpix.com.br"
+        }
+    ]
+}

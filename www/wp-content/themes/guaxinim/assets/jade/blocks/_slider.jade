@@ -1,0 +1,76 @@
+//- attributes
+//- 	data-interval="int|false" <5000> ==> carousel interval (miliseconds)
+//- 	data-pause="hover|false" <"hover"> ==> pause carousel on hover
+//- 	data-wrap="boolean" <false> ==> Specifies whether the carousel should go through all slides continuously, or stop at the last slide
+
+//- SUBMIXINS
+mixin controls(id)
+	a.left.carousel-control(href="##{id}", role="button", data-slide="prev", class!="<?php echo ($options->shadow)? '':'no-shadow' ?> <?php echo ($options->out_controls)? 'out no-shadow':'' ?>")
+		span.glyphicon.glyphicon-chevron-left(aria-hidden="true", class!="<?php echo ($options->control_class)? ('fa fa-' . $options->control_class . '-left') : ('') ?>")
+		span.sr-only Previous
+	a.right.carousel-control(href="##{id}", role="button", data-slide="next", class!="<?php echo ($options->shadow)? '':'no-shadow' ?> <?php echo ($options->out_controls)? 'out no-shadow':'' ?>")
+		span.glyphicon.glyphicon-chevron-right(aria-hidden="true", class!="<?php echo ($options->control_class)? ('fa fa-' . $options->control_class . '-right') : ('') ?>")
+		span.sr-only Next
+mixin dots(id)
+	ol.carousel-indicators
+		- foreach($items as $key=>$value):
+			li(data-target="#" + id, data-slide-to!="<?php echo $key ?>", class!="<?php echo ($key == 0)? 'active' : '' ?>")
+		- endforeach
+		
+mixin slider(id, maxHeight , $items, $options)
+	//- Prepare option object
+	| <?php 
+	|	$options = (object) array(
+	|		'height' => isset($options->height)? $options->height : false,
+	|		'interval' => isset($options->interval)? $options->interval : 5000,
+	|		'wrap' => isset($options->wrap)? $options->wrap : true,
+	|		'dots' => isset($options->dots)? $options->dots : true,
+	|		'shadow' => isset($options->shadow)? $options->shadow : true,
+	|		'controls' => isset($options->controls)? $options->controls : true,
+	|		'control_class'	=> isset($options->control_class)? $options->control_class : false,
+	|		'out_dots'	=> isset($options->out_dots)? $options->out_dots : false,
+	|		'out_controls'	=> isset($options->out_controls)? $options->out_controls : false,
+	|	); ?>
+	
+	//- remove
+	//- pre
+	//- 	- var_dump($options);		
+	
+	- if(isset($items) && sizeof($items) > 0):
+		div.carousel.slide(id=id, class!="<?php echo ($options->out_dots)? 'out':'' ?>", data-ride="carousel", data-interval!="<?php echo $options->interval ?>", data-wrap!="<?php echo $options->wrap ?>")
+			//- Wrapper for slides
+			div.carousel-inner(role="listbox")
+				//- Make items
+				- foreach($items as $key=>$value):
+					div.item(class!="<?php echo ($key == 0)? 'active' : '' ?>")
+						
+						//- Make link (if its have)
+						- if(isset($value->href)):
+							a(href!="<?php echo $value->href ?>", target!="<?php echo isset($value->target)? $value->target : '_blank' ?>")
+						- endif					
+						//- make image
+						.slider-size(style!='background-image:<?php echo "url({$value->src})" ?><?php echo ($options->height)? "; height:{$options->height}px":""  ?>')
+							//- img.img-responsive(src!="<?php echo $value->src ?>", alt!="<?php echo (isset($value->title)? $value->title : '' ) ?>")					
+							//- Make Title and Caption
+							div.carousel-caption 
+								h3 <?php echo (isset($value->title)? $value->title : '&nbsp;' ) ?> 
+								p <?php echo (isset($value->caption)? $value->caption : '&nbsp;' ) ?>
+				- endforeach				
+				//- Controls
+				- if($options->controls && !$options->out_controls):
+					+controls(id)
+				- endif
+			- if($options->controls && $options->out_controls):
+				+controls(id)
+			- endif
+				//- Carousel dots
+				- if($options->dots && !$options->out_dots):
+					+dots(id)
+				- endif				
+			//- Carousel dots
+			- if($options->dots && $options->out_dots):
+				+dots(id)
+			- endif
+	- endif
+	//- reset options
+	- $options = null;

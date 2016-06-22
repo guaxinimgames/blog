@@ -1,0 +1,11 @@
+extends index
+append scripts
+	script(type="text/javascript", src!='<?php echo get_template_directory_uri(); ?>/assets/js/pages/contact/contact.min.js')
+				
+prepend header
+	- //Template Name: Contato
+block main	
+	main#content(class!="<?php echo odin_classes_page_sidebar(); ?>",tabindex="-1",role="main")
+		//- set contact form
+		div.contact-form
+			- echo odin_contact_form()->render();

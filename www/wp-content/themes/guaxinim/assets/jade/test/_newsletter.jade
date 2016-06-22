@@ -1,0 +1,144 @@
+.row
+	div.col-md-12
+		h1.text-center Newsletter
+.row
+	div.col-md-6
+		h2.text-center Default
+		+newsletter($newsletter)
+	div.col-md-6
+		h2.text-center Remove Addon
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"remove_addon" => true
+		|					);
+		|	?>
+		pre
+			- var_dump($newsletter)
+		+newsletter($newsletter)
+.row.hidden-xs
+	div.col-md-12
+		h2.text-center Form Class (position)
+.row
+	div.col-md-12
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"classes" => 'left'
+		|					);
+		|	?>
+		pre
+			- var_dump($newsletter)
+		h3.text-left left (default)
+		+newsletter($newsletter)
+	div.col-md-12
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"classes" => 'center'
+		|					);
+		|	?>
+		h3.text-center center
+		+newsletter($newsletter)
+	div.col-md-12
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"classes" => 'right'
+		|					);
+		|	?>
+		h3.text-right right
+		+newsletter($newsletter)
+.row
+	div.col-xs-12.col-sm-12.col-md-12
+		h2.text-center Block
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"block" => true
+		|					);
+		|	?>
+.row
+	div.col-xs-12.col-sm-6.col-md-5
+		+newsletter($newsletter)
+	div.hidden-xs.col-sm-6.col-md-4
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"block" => true
+		|					);
+		|	?>
+		+newsletter($newsletter)
+	div.hidden-xs.hidden-sm.col-md-3
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"block" => true
+		|					);
+		|	?>
+		+newsletter($newsletter)
+.row
+	div.col-md-6
+		h2.text-center With name
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"name" => true,
+		|					);
+		|	?>
+		pre
+			- var_dump($newsletter)
+		+newsletter($newsletter)
+	div.col-md-6
+		h2.text-center With name (block)
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"name" => true,
+		|					"block" => true
+		|					);
+		|	?>
+		pre
+			- var_dump($newsletter)
+		+newsletter($newsletter)
+.row
+	div.col-md-6
+		h2.text-center With name & phone
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"name" => true,
+		|					"phone" => "(99)9999-9999?9",
+		|					);
+		|	?>
+		pre
+			- var_dump($newsletter)
+		+newsletter($newsletter)
+	div.col-md-6
+		h2.text-center With name & phone (block)
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"name" => true,
+		|					"phone" => "(99)9999-9999?9",
+		|					"block" => true
+		|					);
+		|	?>
+		pre
+			- var_dump($newsletter)
+		+newsletter($newsletter)
+.row
+	.col-md-6
+		h2.text-center Submit class
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"submit_class" => "btn-primary",
+		|					"remove_addon" => true
+		|					);
+		|	?>
+		pre
+			- var_dump($newsletter)
+		+newsletter($newsletter)
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"submit_class" => "btn-success",
+		|					"remove_addon" => true
+		|					);
+		|	?>
+		+newsletter($newsletter)
+		|	<?php 
+		|				$newsletter = (object) array(
+		|					"submit_class" => "btn-warning",
+		|					"remove_addon" => true
+		|					);
+		|	?>
+		+newsletter($newsletter)

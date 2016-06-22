@@ -1,0 +1,41 @@
+include ./blocks/_blocks
+doctype html
+head
+	block meta
+		meta(charset!= "<?php bloginfo( 'charset' ); ?>")
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(rel='profile', href='http://gmpg.org/xfn/11')
+		link(rel='pingback', href!="<?php bloginfo( 'pingback_url' ); ?>")
+
+	block favicon
+		- if(!get_option( 'site_icon' )):
+			link(href!='<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico', rel='shortcut icon')
+		- endif
+	
+	block scripts
+		<!--[if lt IE 9]>
+		script(src!='<?php echo get_template_directory_uri(); ?>/assets/js/html5.js')
+		<![endif]-->	
+		script(src!='<?php echo get_template_directory_uri(); ?>/assets/js/html5.js')
+		- wp_head();
+	
+body("<?php body_class(); ?>")
+
+	block header
+		include ./includes/_header.jade
+	block wrapper
+		div#wrapper.container
+			block main
+				main#content(class!="<?php echo odin_classes_page_sidebar(); ?>",tabindex="-1",role="main")
+					- if(have_posts()):
+						- while ( have_posts() ) : the_post();
+							- get_template_part( 'content', get_post_format() );
+						- endwhile;
+						- odin_paging_nav();
+					- else:
+						- get_template_part( 'content', 'none' );
+					- endif
+			block sidebar
+				include ./includes/_sidebar.jade
+	block footer
+		include ./includes/_footer.jade

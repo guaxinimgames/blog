@@ -1,0 +1,16 @@
+extends index
+block main
+	- if ( have_posts() ) :
+		header.page-header
+			h1.page-title
+				- printf( __( 'Search Results for: %s', 'odin' ), get_search_query() );
+			
+		- while ( have_posts() ) : the_post();
+			- get_template_part( 'content', get_post_format() );
+		- endwhile
+			
+		- odin_paging_nav();
+	- else:
+		- get_template_part( 'content', 'none' );
+	- endif
+block sidebar

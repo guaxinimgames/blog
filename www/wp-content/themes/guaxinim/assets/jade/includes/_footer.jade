@@ -1,0 +1,21 @@
+include ../blocks/_blocks
+footer#footer(role="contentinfo")
+	div.container-fluid
+		+social("twitter", "facebook", "pinterest", "linkedin", "youtube", "vimeo", "instagram")
+	div.container-fluid
+		div.menu
+			|<?php echo wp_nav_menu(
+			|		array(
+			|			'theme_location' => 'main-menu',
+			|			'depth' => 2,
+			|			'container' => false,
+			|			'menu_class' => 'nav navbar-nav center',
+			|			'fallback_cb' => 'Odin_Bootstrap_Nav_Walker::fallback',
+			|			'walker' => new Odin_Bootstrap_Nav_Walker()
+			|		)
+			|	); ?>
+		div
+			p 
+				| &copy; <?php echo date('Y'); ?> #[a(href!="<?php echo home_url(); ?>") <?php bloginfo( 'name' ) ?>] 
+				- echo _e( 'All rights reserved', 'odin' ) . " | " . sprintf( __( 'Powered by the <a href="%s" rel="nofollow" target="_blank">Odin</a> forces and <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'odin' ), 'http://wpod.in/', 'http://wordpress.org/' ); 
+- wp_footer();

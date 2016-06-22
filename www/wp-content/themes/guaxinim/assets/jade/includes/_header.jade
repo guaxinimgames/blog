@@ -1,0 +1,45 @@
+include ../blocks/_blocks
+a#skippy.sr-only.sr-only-focusable(href='#content')
+	.container
+		span.skiplink-text
+			- _e( 'Skip to content', 'odin' );
+header#header(role='banner')
+		.container
+			block top
+				.header-top
+					.col-md-3
+			block middle
+				.page-header
+					- odin_the_custom_logo();
+					- if(is_home()):
+						h1.site-title
+							a(href!="<?php echo esc_url( home_url( '/' ) ); ?>", title!="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>", rel='home')
+							- bloginfo('name')
+						h2.site-description
+							- bloginfo('description')
+					- else:      
+						div.site-title.h1
+							a(href!="<?php echo esc_url( home_url( '/' ) ); ?>", title!="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>", rel='home')
+								- bloginfo('name')
+						div.site-description.h2
+								- bloginfo('description')
+					- endif
+					- $header_image = get_header_image();
+					- if(!empty($header_image)):
+						a(href!="<?php echo esc_url( home_url( '/' ) ); ?>")
+							img(src!='<?php echo esc_url( $header_image ); ?>', height!='<?php esc_attr_e( $header_image->height ); ?>', width!='<?php esc_attr_e( $header_image->width ); ?>', alt='')
+					- endif
+			block nav
+				div#main-navigation.navbar.navbar-default
+					div.navbar-header
+						button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-main-navigation')
+							span.sr-only
+								- _e( 'Toggle navigation', 'odin' );
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand.visible-xs-block(href!="<?php echo esc_url( home_url( '/' ) ); ?>", title!="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>", rel='home')
+					nav.collapse.navbar-collapse.navbar-main-navigation(role='navigation')
+						- wp_nav_menu(array('theme_location' => 'main-menu','depth' => 2,'container' => false,'menu_class' => 'nav navbar-nav','fallback_cb' => 'Odin_Bootstrap_Nav_Walker::fallback','walker' => new Odin_Bootstrap_Nav_Walker()));
+						block search
+						+searchbox(class="navbar-right")
