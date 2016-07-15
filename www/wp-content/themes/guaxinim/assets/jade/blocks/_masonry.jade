@@ -1,0 +1,29 @@
+mixin masonry(_class)
+	.masonry.margin
+		.grid
+			.grid-sizer(class="#{_class}")
+			- foreach ($masonry as $item):
+				.grid-item(class="#{_class}")
+					.grid-item-content
+						a(href!="<?php echo $item->href ?>")
+						img.img-responsive(src!="<?php echo $item->src ?>")
+						h3.text-center!= $item->name
+			- endforeach
+	- $masonry = null;
+	
+mixin masonry-posts(_class)
+	.masonry
+		.grid
+			.grid-sizer(class="#{_class}")
+			- while ( have_posts() ) : the_post();
+				.grid-item(class="#{_class}")
+					.grid-item-content.margin
+						a.block(href!="<?php echo get_the_permalink() ?>", title!="<?php echo get_the_title() ?>")
+						h3.text-center.text-uppercase!= get_the_title()
+						- $img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium' )['0'];
+						- if(!is_null($img)):
+							img.img-responsive.margin(src!="<?php echo $img ?>", alt!="<?php echo get_the_title() ?>", data-src!="<?php echo $img ?>")
+						- endif
+						p.text-justify!= get_the_excerpt()
+			- endwhile;
+			- wp_reset_postdata();
