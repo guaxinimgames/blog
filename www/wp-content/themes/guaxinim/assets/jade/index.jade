@@ -18,24 +18,40 @@ head
 		<![endif]-->	
 		script(src!='<?php echo get_template_directory_uri(); ?>/assets/js/html5.js')
 		- wp_head();
-	
+	block layout
+		- $layout = "sidebar";
 body("<?php body_class(); ?>")
-
+	block script-fb
+		script
+			:verbatim
+				var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
 	block header
 		include ./includes/_header.jade
 	block wrapper
 		div#wrapper.container
-			block main
-				main#content(class!="<?php echo odin_classes_page_sidebar(); ?>",tabindex="-1",role="main")
-					- if(have_posts()):
-						- while ( have_posts() ) : the_post();
-							- get_template_part( 'content', get_post_format() );
-						- endwhile;
-						- odin_paging_nav();
-					- else:
-						- get_template_part( 'content', 'none' );
-					- endif
+			:php
+				switch($layout){
+					case "full":
+						$_class = odin_classes_page_full();
+						break;
+					case "sidebar":
+						$_class = odin_classes_page_sidebar();
+						break;
+				}
+			main#content(class!="<?php echo $_class; ?>",tabindex="-1",role="main")
+				block main
+						- if(have_posts()):
+							- while ( have_posts() ) : the_post();
+								- get_template_part( 'content', get_post_format() );
+							- endwhile;
+							- odin_paging_nav();
+						- else:
+							- get_template_part( 'content', 'none' );
+						- endif
 			block sidebar
-				include ./includes/_sidebar.jade
+				- if($layout == "sidebar"):
+					.hidden-xs.hidden-sm
+						- get_sidebar();
+				- endif
 	block footer
 		include ./includes/_footer.jade

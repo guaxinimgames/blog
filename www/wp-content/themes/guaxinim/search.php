@@ -6,23 +6,20 @@
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>"><?php if(!get_option( 'site_icon' )): ?>
   <link href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico" rel="shortcut icon"><?php endif ?><!--[if lt IE 9]>
   <script src="<?php echo get_template_directory_uri(); ?>/assets/js/html5.js"></script><![endif]-->	
-  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/html5.js"></script><?php wp_head(); ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/assets/js/html5.js"></script><?php wp_head(); ?><?php $layout = "sidebar"; ?>
 </head>
-<body <?php body_class(); ?>><a id="skippy" href="#content" class="sr-only sr-only-focusable">
+<body <?php body_class(); ?>>
+  <script>
+var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
+
+  </script><a id="skippy" href="#content" class="sr-only sr-only-focusable">
     <div class="container"><span class="skiplink-text"><?php _e( 'Skip to content', 'odin' ); ?></span></div></a>
   <header id="header" role="banner">
     <div class="container">
       <div class="header-top">
         <div class="col-md-3"></div>
       </div>
-      <div class="page-header"><?php odin_the_custom_logo(); ?><?php if(is_home()): ?>
-        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"></a><?php bloginfo('name') ?>
-        </h1>
-        <h2 class="site-description"><?php bloginfo('description') ?>
-        </h2><?php else:       ?>
-        <div class="site-title h1"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo('name') ?></a></div>
-        <div class="site-description h2"><?php bloginfo('description') ?>
-        </div><?php endif ?><?php $header_image = get_header_image(); ?><?php if(!empty($header_image)): ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" height="<?php esc_attr_e( $header_image->height ); ?>" width="<?php esc_attr_e( $header_image->width ); ?>" alt=""></a><?php endif ?>
+      <div class="page-header"><?php odin_the_custom_logo(); ?><?php $header_image = get_header_image(); ?><?php if(!empty($header_image)): ?><a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="background-image:url(<?php echo esc_url( $header_image ); ?>)" class="text-center"></a><?php endif ?>
       </div>
       <div id="main-navigation" class="navbar navbar-default">
         <div class="navbar-header">
@@ -41,38 +38,42 @@
       </div>
     </div>
   </header>
-  <div id="wrapper" class="container"><?php if ( have_posts() ) : ?>
-    <header class="page-header">
-      <h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'odin' ), get_search_query() ); ?>
-      </h1>
-    </header><?php while ( have_posts() ) : the_post(); ?><?php get_template_part( 'content', get_post_format() ); ?><?php endwhile ?><?php odin_paging_nav(); ?><?php else: ?><?php get_template_part( 'content', 'none' ); ?><?php endif ?>
+  <div id="wrapper" class="container"><?php switch($layout){
+	case "full":
+		$_class = odin_classes_page_full();
+		break;
+	case "sidebar":
+		$_class = odin_classes_page_sidebar();
+		break;
+} ?>
+    <main id="content" tabindex="-1" role="main" class="<?php echo $_class; ?>"><?php if ( have_posts() ) : ?>
+      <header class="page-header">
+        <h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'odin' ), get_search_query() ); ?>
+        </h1>
+      </header><?php while ( have_posts() ) : the_post(); ?><?php get_template_part( 'content', get_post_format() ); ?><?php endwhile ?><?php odin_paging_nav(); ?><?php else: ?><?php get_template_part( 'content', 'none' ); ?><?php endif ?>
+    </main><?php if($layout == "sidebar"): ?>
+    <div class="hidden-xs hidden-sm"><?php get_sidebar(); ?>
+    </div><?php endif ?>
   </div>
   <footer id="footer" role="contentinfo">
-    <div class="container-fluid">
+    <div class="container-fluid"><?php $socials = get_field('socials', 'options'); ?><?php if(isset($socials) && is_array($socials)): ?>
         <div class="social-block">
-          <ul>
-            <li class="list-unstyled"><a href="http://www.google.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
-            <li class="list-unstyled"><a href="http://www.google.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
-            <li class="list-unstyled"><a href="http://www.google.com" target="_blank"><i class="fa fa-pinterest"></i></a></li>
-            <li class="list-unstyled"><a href="http://www.google.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-            <li class="list-unstyled"><a href="http://www.google.com" target="_blank"><i class="fa fa-youtube"></i></a></li>
-            <li class="list-unstyled"><a href="http://www.google.com" target="_blank"><i class="fa fa-vimeo"></i></a></li>
-            <li class="list-unstyled"><a href="http://www.google.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
+          <ul><?php foreach($socials as $social): ?>
+            <li class="list-unstyled"><a href="<?php echo $social['url'] ?>" target="_blank"><i class="fa fa-<?php echo $social['name'] ?>"></i></a></li><?php endforeach ?>
           </ul>
-        </div>
+        </div><?php endif ?><?php $socials = null; ?>
     </div>
     <div class="container-fluid">
-      <div class="menu">
-        <?php echo wp_nav_menu(
-        		array(
-        			'theme_location' => 'main-menu',
-        			'depth' => 2,
-        			'container' => false,
-        			'menu_class' => 'nav navbar-nav center',
-        			'fallback_cb' => 'Odin_Bootstrap_Nav_Walker::fallback',
-        			'walker' => new Odin_Bootstrap_Nav_Walker()
-        		)
-        	); ?>
+      <div class="menu"><?php echo wp_nav_menu(
+	array(
+		'theme_location' => 'main-menu',
+		'depth' => 2,
+		'container' => false,
+		'menu_class' => 'nav navbar-nav center',
+		'fallback_cb' => 'Odin_Bootstrap_Nav_Walker::fallback',
+		'walker' => new Odin_Bootstrap_Nav_Walker()
+	)
+); ?>
       </div>
       <div>
         <p> &copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ) ?></a> <?php echo _e( 'All rights reserved', 'odin' ) . " | " . sprintf( __( 'Powered by the <a href="%s" rel="nofollow" target="_blank">Odin</a> forces and <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'odin' ), 'http://wpod.in/', 'http://wordpress.org/' );  ?>

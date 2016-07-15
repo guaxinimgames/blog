@@ -1,7 +1,12 @@
-mixin social(...items)
-	div.social-block
-		ul
-			each item in items
-				li.list-unstyled
-					a(href='http://www.google.com', target="_blank")
-						i.fa(class="fa-" + item)
+mixin social
+	- $socials = get_field('socials', 'options');
+	- if(isset($socials) && is_array($socials)):
+		div.social-block
+			ul
+				- foreach($socials as $social):
+					li.list-unstyled
+						a(href!="<?php echo $social['url'] ?>", target="_blank")
+							i.fa(class!="fa-<?php echo $social['name'] ?>")
+				- endforeach
+	- endif
+	- $socials = null;

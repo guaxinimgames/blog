@@ -1,19 +1,20 @@
 include ../blocks/_blocks
 footer#footer(role="contentinfo")
 	div.container-fluid
-		+social("twitter", "facebook", "pinterest", "linkedin", "youtube", "vimeo", "instagram")
+		+social
 	div.container-fluid
 		div.menu
-			|<?php echo wp_nav_menu(
-			|		array(
-			|			'theme_location' => 'main-menu',
-			|			'depth' => 2,
-			|			'container' => false,
-			|			'menu_class' => 'nav navbar-nav center',
-			|			'fallback_cb' => 'Odin_Bootstrap_Nav_Walker::fallback',
-			|			'walker' => new Odin_Bootstrap_Nav_Walker()
-			|		)
-			|	); ?>
+			:php
+				echo wp_nav_menu(
+					array(
+						'theme_location' => 'main-menu',
+						'depth' => 2,
+						'container' => false,
+						'menu_class' => 'nav navbar-nav center',
+						'fallback_cb' => 'Odin_Bootstrap_Nav_Walker::fallback',
+						'walker' => new Odin_Bootstrap_Nav_Walker()
+					)
+				);
 		div
 			p 
 				| &copy; <?php echo date('Y'); ?> #[a(href!="<?php echo home_url(); ?>") <?php bloginfo( 'name' ) ?>] 

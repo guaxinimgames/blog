@@ -1,7 +1,7 @@
 {
-    "name": "Wordpress",
+    "name": "Guaxinim Blog",
     "version": "1.0.0",
-    "description": "Author name",
+    "description": "Guaxinim games blog",
     "main": "www/wp-content/themes/guaxinim/library/js/main.js",
     "scripts": {
         "test": ""
@@ -12,22 +12,10 @@
         "gamedev",
         "gulp",
         "sass",
-        "compass"
+        "compass",
+        "Odin",
+        "Jade"
     ],
-    "author": "author",
-    "license": "ISC",
-    "devDependencies": {
-        "browser-sync": "^2.9.8",
-        "gulp": "^3.9.0",
-        "gulp-clean": "^0.3.1",
-        "gulp-compass": "^2.1.0",
-        "gulp-concat": "^2.6.0",
-        "gulp-if": "^2.0.0",
-        "gulp-notify": "^2.2.0",
-        "gulp-plumber": "^1.0.1",
-        "gulp-rename": "^1.2.2",
-        "gulp-uglify": "^1.4.2",
-        "gulp-uglifyjs": "^0.6.2",
-        "run-sequence": "^1.1.4"
-    }
+    "author": "Guaxinim Games",
+    "license": "ISC"
 }

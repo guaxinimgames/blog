@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pipa v1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-03 10:37-0300\n"
-"PO-Revision-Date: 2016-06-03 10:37-0300\n"
+"POT-Creation-Date: 2016-07-09 18:16-0300\n"
+"PO-Revision-Date: 2016-07-09 18:16-0300\n"
 "Last-Translator: Rafael Funchal <rafaelfunchal@gmail.com>\n"
 "Language-Team: Tinpix\n"
 "Language: pt_BR\n"
@@ -30,58 +30,58 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-9: assets/images\n"
 
 # @ odin
-#: 404.php:12 archive-portfolio.php:12 archive.php:12 category.php:12
-#: contact-template.php:13 index.php:12 master.php:1 page.php:12 search.php:12
-#: single.php:12 test.php:12
+#: 404.php:16 archive.php:16 category.php:16 index.php:16 master.php:1
+#: page.php:16 pages/home-template.php:16 pages/options.php:12 search.php:16
+#: single.php:16 test.php:12
 msgid "Skip to content"
 msgstr "Pular para o conteúdo"
 
 # @ odin
-#: 404.php:26 archive-portfolio.php:26 archive.php:26 category.php:26
-#: contact-template.php:27 index.php:26 master.php:1 page.php:26 search.php:26
-#: single.php:26 test.php:26
+#: 404.php:26 archive.php:26 category.php:26 index.php:26 master.php:1
+#: page.php:26 pages/home-template.php:26 pages/options.php:29 search.php:26
+#: single.php:26 test.php:29
 msgid "Toggle navigation"
 msgstr "Alternar navegação"
 
 # @ odin
-#: 404.php:30 404.php:51 archive-portfolio.php:30 archive.php:30
-#: category.php:30 contact-template.php:31 index.php:30 master.php:1
-#: page.php:30 search.php:30 single.php:30 test.php:30
+#: 404.php:30 404.php:59 archive.php:30 category.php:30 index.php:30
+#: master.php:1 page.php:30 pages/home-template.php:30 pages/options.php:33
+#: search.php:30 single.php:30 test.php:33
 msgid "Search:"
 msgstr "Pesquisar:"
 
 # @ odin
-#: 404.php:33 404.php:35 404.php:54 404.php:56 archive-portfolio.php:33
-#: archive-portfolio.php:35 archive.php:33 archive.php:35 category.php:33
-#: category.php:35 contact-template.php:34 contact-template.php:36 index.php:33
-#: index.php:35 master.php:1 page.php:33 page.php:35 search.php:33
-#: search.php:35 searchform.php:12 single.php:33 single.php:35 test.php:33
-#: test.php:35
+#: 404.php:33 404.php:35 404.php:62 404.php:64 archive.php:33 archive.php:35
+#: category.php:33 category.php:35 index.php:33 index.php:35 master.php:1
+#: page.php:33 page.php:35 pages/home-template.php:33
+#: pages/home-template.php:35 pages/options.php:36 pages/options.php:38
+#: search.php:33 search.php:35 searchform.php:12 single.php:33 single.php:35
+#: test.php:36 test.php:38
 msgid "Search"
 msgstr "Pesquisa"
 
 # @ odin
-#: 404.php:44
+#: 404.php:52
 msgid "Not Found"
 msgstr "Nada Encontrado"
 
 # @ odin
-#: 404.php:48
+#: 404.php:56
 msgid "It looks like nothing was found at this location. Maybe try a search?"
 msgstr ""
 "Parece que nada foi encontrado neste local. Talvez tentar uma pesquisa?"
 
 # @ odin
-#: 404.php:89 archive-portfolio.php:71 archive.php:71 category.php:74
-#: contact-template.php:76 index.php:73 page.php:72 search.php:75 single.php:75
-#: test.php:1626
+#: 404.php:93 archive.php:75 category.php:78 index.php:75 page.php:76
+#: pages/home-template.php:154 pages/options.php:76 search.php:79 single.php:79
+#: test.php:2002
 msgid "All rights reserved"
 msgstr "Todos os direitos reservados"
 
 # @ odin
-#: 404.php:89 archive-portfolio.php:71 archive.php:71 category.php:74
-#: contact-template.php:76 index.php:73 page.php:72 search.php:75 single.php:75
-#: test.php:1626
+#: 404.php:93 archive.php:75 category.php:78 index.php:75 page.php:76
+#: pages/home-template.php:154 pages/options.php:76 search.php:79 single.php:79
+#: test.php:2002
 #, php-format
 msgid ""
 "Powered by the <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">Odin</a> "
@@ -89,6 +89,81 @@ msgid ""
 msgstr ""
 "Powered by the <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">Odin</a> "
 "forces and <a href=\"%s\" rel=\"nofollow\" target=\"_blank\">WordPress</a>."
+
+# @ odin
+#: _comments.php:13
+msgid ""
+"This post is password protected. Enter the password to view all comments."
+msgstr ""
+"Esse post é protegido por senha. Informe a senha para ver todos os "
+"comentários."
+
+# @ odin
+#: _comments.php:22
+msgid "0 Comments"
+msgstr "0 Comentários"
+
+# @ odin
+#: _comments.php:22
+msgid "1 Comment"
+msgstr "1 Comentário"
+
+# @ odin
+#: _comments.php:22
+msgid "% Comments"
+msgstr "% Comentários"
+
+# @ odin
+#: _comments.php:23
+msgid "to"
+msgstr "para"
+
+# @ odin
+#: _comments.php:29 _comments.php:40
+msgid "&larr; Old Comments"
+msgstr "&larr; Comentários Antigos"
+
+# @ odin
+#: _comments.php:30 _comments.php:41
+msgid "New Comments &rarr;"
+msgstr "Novos Comentários &rarr;"
+
+# @ odin
+#: _comments.php:47
+msgid "Comments closed."
+msgstr "Comentários não são permitidos."
+
+# @ odin
+#: _comments.php:56
+msgid "Comment"
+msgstr "Comentário"
+
+# @ odin
+#: _comments.php:59 test.php:594 test.php:596 test.php:619 test.php:621
+#: test.php:683 test.php:685 test.php:708 test.php:710 test.php:780
+#: test.php:782 test.php:805 test.php:807 test.php:869 test.php:871
+#: test.php:894 test.php:896 test.php:958 test.php:960 test.php:983
+#: test.php:985 test.php:1052 test.php:1054 test.php:1077 test.php:1079
+#: test.php:1140 test.php:1142 test.php:1165 test.php:1167 test.php:1228
+#: test.php:1230 test.php:1253 test.php:1255 test.php:1319 test.php:1321
+#: test.php:1344 test.php:1346 test.php:1409 test.php:1411 test.php:1434
+#: test.php:1436 test.php:1501 test.php:1503 test.php:1526 test.php:1528
+#: test.php:1592 test.php:1594 test.php:1617 test.php:1619 test.php:1684
+#: test.php:1686 test.php:1709 test.php:1711 test.php:1770 test.php:1772
+#: test.php:1795 test.php:1797 test.php:1856 test.php:1858 test.php:1881
+#: test.php:1883
+msgid "Name"
+msgstr "Nome"
+
+# @ odin
+#: _comments.php:61
+msgid "E-mail"
+msgstr "E-mail"
+
+# @ odin
+#: _comments.php:63
+msgid "Website"
+msgstr "Website"
 
 # @ odin
 #: audio.php:23 video.php:24
@@ -106,78 +181,6 @@ msgstr "Voltar para %s"
 #, php-format
 msgid "<span class=\"meta-nav\">&larr;</span> %s"
 msgstr "<span class=\"meta-nav\">&larr;</span> %s"
-
-# @ odin
-#: comments.php:13
-msgid ""
-"This post is password protected. Enter the password to view all comments."
-msgstr ""
-"Esse post é protegido por senha. Informe a senha para ver todos os "
-"comentários."
-
-# @ odin
-#: comments.php:22
-msgid "0 Comments"
-msgstr "0 Comentários"
-
-# @ odin
-#: comments.php:22 content.php:53
-msgid "1 Comment"
-msgstr "1 Comentário"
-
-# @ odin
-#: comments.php:22 content.php:53
-msgid "% Comments"
-msgstr "% Comentários"
-
-# @ odin
-#: comments.php:23
-msgid "to"
-msgstr "para"
-
-# @ odin
-#: comments.php:29 comments.php:40
-msgid "&larr; Old Comments"
-msgstr "&larr; Comentários Antigos"
-
-# @ odin
-#: comments.php:30 comments.php:41
-msgid "New Comments &rarr;"
-msgstr "Novos Comentários &rarr;"
-
-# @ odin
-#: comments.php:47
-msgid "Comments closed."
-msgstr "Comentários não são permitidos."
-
-# @ odin
-#: comments.php:56
-msgid "Comment"
-msgstr "Comentário"
-
-# @ odin
-#: comments.php:59 test.php:545 test.php:547 test.php:570 test.php:572
-#: test.php:634 test.php:636 test.php:659 test.php:661 test.php:726
-#: test.php:728 test.php:751 test.php:753 test.php:812 test.php:814
-#: test.php:837 test.php:839 test.php:898 test.php:900 test.php:923
-#: test.php:925 test.php:989 test.php:991 test.php:1014 test.php:1016
-#: test.php:1077 test.php:1079 test.php:1102 test.php:1104 test.php:1165
-#: test.php:1167 test.php:1190 test.php:1192 test.php:1256 test.php:1258
-#: test.php:1281 test.php:1283 test.php:1346 test.php:1348 test.php:1371
-#: test.php:1373 test.php:1438 test.php:1440 test.php:1463 test.php:1465
-#: test.php:1529 test.php:1531 test.php:1554 test.php:1556
-msgid "Name"
-msgstr "Nome"
-
-# @ odin
-#: comments.php:61
-msgid "E-mail"
-msgstr "E-mail"
-
-# @ odin
-#: comments.php:63
-msgid "Website"
-msgstr "Website"
 
 # @ odin
 #: content-none.php:11
@@ -238,11 +241,6 @@ msgid "Tagged as:"
 msgstr "Marcado como:"
 
 # @ odin
-#: content.php:53
-msgid "Leave a comment"
-msgstr "Deixe um comentário"
-
-# @ odin
 #: functions.php:70
 msgid "Main Menu"
 msgstr "Menu Principal"
@@ -279,38 +277,45 @@ msgid "Next image &rarr;"
 msgstr "Próxima imagem &rarr;"
 
 # @ odin
-#: search.php:43
+#: search.php:51
 #, php-format
 msgid "Search Results for: %s"
 msgstr "Resultado de Busca por: %s"
 
 # @pipa
-#: test.php:553 test.php:555 test.php:576 test.php:578 test.php:642
-#: test.php:644 test.php:665 test.php:667 test.php:734 test.php:736
-#: test.php:757 test.php:759 test.php:820 test.php:822 test.php:843
-#: test.php:845 test.php:906 test.php:908 test.php:929 test.php:931
-#: test.php:997 test.php:999 test.php:1020 test.php:1022 test.php:1085
-#: test.php:1087 test.php:1108 test.php:1110 test.php:1173 test.php:1175
-#: test.php:1196 test.php:1198 test.php:1264 test.php:1266 test.php:1287
-#: test.php:1289 test.php:1354 test.php:1356 test.php:1377 test.php:1379
-#: test.php:1446 test.php:1448 test.php:1469 test.php:1471 test.php:1537
-#: test.php:1539 test.php:1560 test.php:1562
+#: test.php:602 test.php:604 test.php:625 test.php:627 test.php:691
+#: test.php:693 test.php:714 test.php:716 test.php:788 test.php:790
+#: test.php:811 test.php:813 test.php:877 test.php:879 test.php:900
+#: test.php:902 test.php:966 test.php:968 test.php:989 test.php:991
+#: test.php:1060 test.php:1062 test.php:1083 test.php:1085 test.php:1148
+#: test.php:1150 test.php:1171 test.php:1173 test.php:1236 test.php:1238
+#: test.php:1259 test.php:1261 test.php:1327 test.php:1329 test.php:1350
+#: test.php:1352 test.php:1417 test.php:1419 test.php:1440 test.php:1442
+#: test.php:1509 test.php:1511 test.php:1532 test.php:1534 test.php:1600
+#: test.php:1602 test.php:1623 test.php:1625 test.php:1692 test.php:1694
+#: test.php:1715 test.php:1717 test.php:1778 test.php:1780 test.php:1801
+#: test.php:1803 test.php:1864 test.php:1866 test.php:1887 test.php:1889
 msgid "Phone"
 msgstr "Telefone"
 
 # @pipa
-#: test.php:559 test.php:581 test.php:648 test.php:670 test.php:740
-#: test.php:762 test.php:826 test.php:848 test.php:912 test.php:934
-#: test.php:1003 test.php:1025 test.php:1091 test.php:1113 test.php:1179
-#: test.php:1201 test.php:1270 test.php:1292 test.php:1360 test.php:1382
-#: test.php:1452 test.php:1474 test.php:1543 test.php:1565
+#: test.php:608 test.php:630 test.php:697 test.php:719 test.php:794
+#: test.php:816 test.php:883 test.php:905 test.php:972 test.php:994
+#: test.php:1066 test.php:1088 test.php:1154 test.php:1176 test.php:1242
+#: test.php:1264 test.php:1333 test.php:1355 test.php:1423 test.php:1445
+#: test.php:1515 test.php:1537 test.php:1606 test.php:1628 test.php:1698
+#: test.php:1720 test.php:1784 test.php:1806 test.php:1870 test.php:1892
 msgid "Send"
 msgstr "Enviar"
 
 # @pipa
-#: test.php:1587
+#: test.php:1920 test.php:1942 test.php:1963
 msgid "Close"
 msgstr "Fechar"
+
+# @ odin
+#~ msgid "Leave a comment"
+#~ msgstr "Deixe um comentário"
 
 # @ odin
 #~ msgid "Daily Archives: %s"

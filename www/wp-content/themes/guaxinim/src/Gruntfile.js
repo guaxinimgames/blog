@@ -14,7 +14,7 @@ module.exports = function( grunt ) {
 		// setting folder templates
 		dirs: {
 			assets: '../assets',
-			// jade: '../assets/jade',
+			jade: '../assets/jade',
 			php: '../',
 			css: '../assets/css',
 			js: '../assets/js',
@@ -31,8 +31,8 @@ module.exports = function( grunt ) {
 				jshintrc: '.jshintrc'
 			},
 			all: [
-				'Gruntfile.js',
-				'<%= dirs.js %>/main.js'
+			'Gruntfile.js',
+			'<%= dirs.js %>/main.js'
 			]
 		},
 
@@ -40,36 +40,44 @@ module.exports = function( grunt ) {
 		uglify: {
 			dist: {
 				options:{
-					beautify: (compress)? false : true
+					beautify: (compress)? false : true,
+					mangle: compress
 				},
 				files: {
+					'<%= dirs.js %>/guaxinim.min.js':[
+					'<%= dirs.js %>/blocks/*.js',
+					'<%= dirs.js %>/plugins/*.js',
+					'<%= dirs.js %>/listeners/*.js'
+					],
 					'<%= dirs.js %>/main.min.js': [
 						'<%= dirs.js %>/libs/*.js', // External libs/plugins
 						'<%= dirs.js %>/odin.js',    // Odin JavaScript
-						'<%= dirs.js %>/pipa.js'    // Pipa JavaScript
-					]
-				}
-			},
-			pages: {
-				options:{
-					beautify: (compress)? false : true
+						'<%= dirs.js %>/guaxinim.min.js'    // Pipa JavaScript
+						]
+					}
 				},
-				files: [{
-					expand: true,
-          cwd: '<%= dirs.js %>/pages',
-          src: ['**/*.js','!**/*.min.js'],
-          dest: '<%= dirs.js %>/pages/',
-					rename: function(destBase, destPath) {
-		            return destBase + destPath.replace('.js', '.min.js');
-		        }
-				}]
-			},
-			bootstrap: {
-				options:{
-					beautify: (compress)? false : true
+				pages: {
+					options:{
+						beautify: (compress)? false : true,
+						mangle: compress
+					},
+					files: [{
+						expand: true,
+						cwd: '<%= dirs.js %>/pages',
+						src: ['**/*.js','!**/*.min.js'],
+						dest: '<%= dirs.js %>/pages/',
+						rename: function(destBase, destPath) {
+							return destBase + destPath.replace('.js', '.min.js');
+						}
+					}]
 				},
-				files: {
-					'<%= dirs.js %>/libs/bootstrap.min.js': [
+				bootstrap: {
+					options:{
+						beautify: (compress)? false : true,
+						mangle: compress
+					},
+					files: {
+						'<%= dirs.js %>/libs/bootstrap.min.js': [
 						'<%= dirs.js %>/bootstrap/transition.js',
 						'<%= dirs.js %>/bootstrap/alert.js',
 						'<%= dirs.js %>/bootstrap/button.js',
@@ -82,36 +90,30 @@ module.exports = function( grunt ) {
 						'<%= dirs.js %>/bootstrap/scrollspy.js',
 						'<%= dirs.js %>/bootstrap/tab.js',
 						'<%= dirs.js %>/bootstrap/affix.js'
-					]
+						]
+					}
+				}
+			},
+			pug: {
+				compile: {
+					options: {
+						data: {
+							debug: false,
+							pretty: true,
+						}
+					},
+					files: {
+						'<%= dirs.php %>/404.php': ['<%= dirs.jade %>/404.jade'],
+					}
+				}
+			},
+			compass: {
+				dist: {
+					options: {
+						config: 'config.rb'
 				}
 			}
 		},
-		/*jadephp: {
-			compile: {
-				options: {
-					pretty: true,
-					filename: '<%= dirs.jade %>/jade',
-					basedir: '<%= dirs.jade %>/jade'
-				},
-				files:[{
-					expand: true,
-					cwd: '<%= dirs.jade %>',
-					src: ['*.jade'],
-					dest: '<%= dirs.php %>',
-					ext: '.php'
-				}]
-  		}
-		},*/
-		compass: {
-	    dist: {
-	      options: {
-	        config: 'config.rb'
-					// sassDir: '<%= dirs.sass %>',
-					// cssDir: '<%= dirs.css %>',
-					// fontsDir:
-	      }
-	    }
-  	},
 
 		// watch for changes and trigger sass, jshint, uglify and livereload browser
 		watch: {
@@ -123,15 +125,15 @@ module.exports = function( grunt ) {
 			},*/
 			compass:{
 				files:[
-					'<%= dirs.sass %>/**'
+				'<%= dirs.sass %>/**'
 				],
 				tasks:['compass']
 			},
 			js: {
 				files: [
-					'<%= jshint.all %>',
-					'<%= dirs.js %>/**/*.js',
-					'!<%= dirs.js %>/**/*.min.js'
+				'<%= jshint.all %>',
+				'<%= dirs.js %>/**/*.js',
+				'!<%= dirs.js %>/**/*.min.js'
 				],
 				tasks: ['jshint', 'uglify']
 			},
@@ -140,9 +142,9 @@ module.exports = function( grunt ) {
 					livereload: true
 				},
 				files: [
-					'<%= dirs.css %>/*.css',
-					'<%= dirs.js %>/*.js',
-					'../**/*.php'
+				'<%= dirs.css %>/*.css',
+				'<%= dirs.js %>/*.js',
+				'../**/*.php'
 				]
 			},
 			options: {
@@ -172,16 +174,16 @@ module.exports = function( grunt ) {
 			options: {
 				args: ['--verbose'],
 				exclude: [
-					'**.DS_Store',
-					'**Thumbs.db',
-					'.editorconfig',
-					'.git/',
-					'.gitignore',
-					'.jshintrc',
-					'sass/',
-					'src/',
-					'README.md',
-					'.ftppass'
+				'**.DS_Store',
+				'**Thumbs.db',
+				'.editorconfig',
+				'.git/',
+				'.gitignore',
+				'.jshintrc',
+				'sass/',
+				'src/',
+				'README.md',
+				'.ftppass'
 				],
 				recursive: true,
 				syncDest: true
@@ -215,20 +217,20 @@ module.exports = function( grunt ) {
 				src: '../',
 				dest: '/PATH/wp-content/themes/odin',
 				exclusions: [
-					'../**.DS_Store',
-					'../**Thumbs.db',
-					'../.git/*',
-					'../*.md',
-					'../.gitignore',
-					'../assets/js/**bootstrap',
-					'../assets/js/**libs',
-					'../assets/js/plugins.js',
-					'../assets/js/main.js',
-					'../*.zip',
-					'../*.sublime-project',
-					'../*.sublime-workspace',
-					'../src/**',
-					'../.ftppass'
+				'../**.DS_Store',
+				'../**Thumbs.db',
+				'../.git/*',
+				'../*.md',
+				'../.gitignore',
+				'../assets/js/**bootstrap',
+				'../assets/js/**libs',
+				'../assets/js/plugins.js',
+				'../assets/js/main.js',
+				'../*.zip',
+				'../*.sublime-project',
+				'../*.sublime-workspace',
+				'../src/**',
+				'../.ftppass'
 				]
 			}
 		},
@@ -238,14 +240,14 @@ module.exports = function( grunt ) {
 			dist: {
 				cwd: '../',
 				src: [
-					'../**',
-					'!../src/**',
-					'!../**.md',
-					'!<%= dirs.sass %>/**',
-					'!<%= dirs.js %>/bootstrap/**',
-					'!<%= dirs.js %>/libs/**',
-					'!../**.zip',
-					'<%= dirs.js %>/main.min.js'
+				'../**',
+				'!../src/**',
+				'!../**.md',
+				'!<%= dirs.sass %>/**',
+				'!<%= dirs.js %>/bootstrap/**',
+				'!<%= dirs.js %>/libs/**',
+				'!../**.zip',
+				'<%= dirs.js %>/main.min.js'
 				],
 				dest: '../<%= pkg.name %>.zip'
 			}
@@ -321,32 +323,32 @@ module.exports = function( grunt ) {
 				force: true
 			},
 			bootstrap_prepare: [
-				'<%= dirs.tmp %>',
-				'<%= dirs.sass %>/bootstrap/',
-				'<%= dirs.js %>/bootstrap/',
-				'<%= dirs.js %>/libs/bootstrap.min.js',
-				'<%= dirs.fonts %>/bootstrap/'
+			'<%= dirs.tmp %>',
+			'<%= dirs.sass %>/bootstrap/',
+			'<%= dirs.js %>/bootstrap/',
+			'<%= dirs.js %>/libs/bootstrap.min.js',
+			'<%= dirs.fonts %>/bootstrap/'
 			],
 			bootstrap: [
-				'<%= dirs.tmp %>'
+			'<%= dirs.tmp %>'
 			],
 			woocommerce_prepare: [
-				'<%= dirs.tmp %>',
-				'<%= dirs.sass %>/woocommerce/',
-				'<%= dirs.fonts %>/woocommerce/',
-				'<%= dirs.images %>/woocommerce/'
+			'<%= dirs.tmp %>',
+			'<%= dirs.sass %>/woocommerce/',
+			'<%= dirs.fonts %>/woocommerce/',
+			'<%= dirs.images %>/woocommerce/'
 			],
 			woocommerce: [
-				'<%= dirs.sass %>/woocommerce/{activation,admin,chosen,dashboard,menu,prettyPhoto,reports-print,select2}**',
-				'<%= dirs.sass %>/woocommerce/*.css',
-				'<%= dirs.tmp %>'
+			'<%= dirs.sass %>/woocommerce/{activation,admin,chosen,dashboard,menu,prettyPhoto,reports-print,select2}**',
+			'<%= dirs.sass %>/woocommerce/*.css',
+			'<%= dirs.tmp %>'
 			]
 		},
 
 		replace: {
 			woocommerce: {
 				src: ['<%= dirs.sass %>/woocommerce/*.scss'],
-		 		overwrite: true,
+				overwrite: true,
 				replacements: [{
 					from: /@import ".+";\n/g,
 					to: ''
@@ -375,7 +377,7 @@ module.exports = function( grunt ) {
 		'jshint',
 		'compass',
 		'uglify'
-	] );
+		] );
 
 	// Optimize Images Task
 	grunt.registerTask( 'optimize', ['imagemin'] );
@@ -387,7 +389,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'compress', [
 		'default',
 		'zip'
-	] );
+		] );
 
 	// Bootstrap Task
 	grunt.registerTask( 'bootstrap', [
@@ -400,7 +402,7 @@ module.exports = function( grunt ) {
 		'clean:bootstrap',
 		'uglify:bootstrap',
 		'compass'
-	] );
+		] );
 
 	// Woocommerce Task
 	grunt.registerTask( 'woo', [
@@ -416,7 +418,7 @@ module.exports = function( grunt ) {
 		'clean:woocommerce',
 		'replace:woocommerce',
 		'compass'
-	] );
+		] );
 
 	// Short aliases
 	grunt.registerTask( 'js', ['jshint'] );
@@ -425,4 +427,6 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'f', ['ftp'] );
 	grunt.registerTask( 'r', ['rsync'] );
 	grunt.registerTask( 'c', ['compress'] );
+	
+	grunt.registerTask( 'p', ['pug'] );
 };

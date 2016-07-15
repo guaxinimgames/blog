@@ -11,23 +11,9 @@ header#header(role='banner')
 			block middle
 				.page-header
 					- odin_the_custom_logo();
-					- if(is_home()):
-						h1.site-title
-							a(href!="<?php echo esc_url( home_url( '/' ) ); ?>", title!="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>", rel='home')
-							- bloginfo('name')
-						h2.site-description
-							- bloginfo('description')
-					- else:      
-						div.site-title.h1
-							a(href!="<?php echo esc_url( home_url( '/' ) ); ?>", title!="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>", rel='home')
-								- bloginfo('name')
-						div.site-description.h2
-								- bloginfo('description')
-					- endif
 					- $header_image = get_header_image();
 					- if(!empty($header_image)):
-						a(href!="<?php echo esc_url( home_url( '/' ) ); ?>")
-							img(src!='<?php echo esc_url( $header_image ); ?>', height!='<?php esc_attr_e( $header_image->height ); ?>', width!='<?php esc_attr_e( $header_image->width ); ?>', alt='')
+						a.text-center(href!="<?php echo esc_url( home_url( '/' ) ); ?>", style!="background-image:url(<?php echo esc_url( $header_image ); ?>)")
 					- endif
 			block nav
 				div#main-navigation.navbar.navbar-default

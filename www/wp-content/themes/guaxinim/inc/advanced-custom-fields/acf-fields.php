@@ -483,7 +483,7 @@ if(function_exists("register_field_group"))
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'videos',
+					'value' => 'post',
 					'order_no' => 0,
 					'group_no' => 0,
 				),

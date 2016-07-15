@@ -68,8 +68,8 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 		register_nav_menus(
 			array(
 				'main-menu' => __( 'Main Menu', 'odin' )
-			)
-		);
+				)
+			);
 
 		/*
 		 * Add post_thumbnails suport.
@@ -92,7 +92,7 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 			'header-text'   => false,
 			'default-image' => '',
 			'uploads'       => true,
-		);
+			);
 
 		add_theme_support( 'custom-header', $default );
 
@@ -102,7 +102,7 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 		$defaults = array(
 			'default-color' => '',
 			'default-image' => '',
-		);
+			);
 
 		add_theme_support( 'custom-background', $defaults );
 
@@ -123,8 +123,8 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 				'wrapper'        => false,
 				'render'         => false,
 				'posts_per_page' => get_option( 'posts_per_page' )
-			)
-		);
+				)
+			);
 
 		/**
 		 * Add support for Post Formats.
@@ -157,8 +157,8 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 				'comment-list',
 				'gallery',
 				'caption'
-			)
-		);
+				)
+			);
 
 		/*
 		 * Let WordPress manage the document title.
@@ -177,7 +177,7 @@ if ( ! function_exists( 'odin_setup_features' ) ) {
 			'height'      => 240,
 			'width'       => 240,
 			'flex-height' => true,
-		) );
+			) );
 	}
 }
 
@@ -198,8 +198,8 @@ function odin_widgets_init() {
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widgettitle widget-title">',
 			'after_title' => '</h3>',
-		)
-	);
+			)
+		);
 }
 
 add_action( 'widgets_init', 'odin_widgets_init' );
@@ -320,17 +320,17 @@ if ( is_woocommerce_activated() ) {
 }
 
 /**
- * PIPA - FUNCTIONS
+ * custom post type
 */
 function register_portolio_cpt() {
 	$type = new Odin_Post_Type(
 		'Portfolio', // Nome (Singular) do Post Type.
 		'portfolio' // Slug do Post Type.
-	);
+		);
 	$type->set_arguments(
 		array(
 			'capability_type' => 'post'
-		)
-	);
+			)
+		);
 
 }
