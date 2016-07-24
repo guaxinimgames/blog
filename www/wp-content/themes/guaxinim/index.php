@@ -46,7 +46,16 @@ var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
 		$_class = odin_classes_page_sidebar();
 		break;
 } ?>
-    <main id="content" tabindex="-1" role="main" class="<?php echo $_class; ?>"><?php if(have_posts()): ?><?php while ( have_posts() ) : the_post(); ?><?php get_template_part( 'content', get_post_format() ); ?><?php endwhile; ?><?php odin_paging_nav(); ?><?php else: ?><?php get_template_part( 'content', 'none' ); ?><?php endif ?>
+    <main id="content" tabindex="-1" role="main" class="<?php echo $_class; ?>"><?php if(have_posts()): ?>
+      <div class="masonry">
+        <div class="grid">
+          <div class="grid-sizer col-xs-12 col-sm-6 col-md-4 col-lg-4"></div><?php while ( have_posts() ) : the_post(); ?>
+          <div class="grid-item col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="grid-item-content margin"><?php get_template_part( 'content', get_post_format() ); ?>
+            </div>
+          </div><?php endwhile; ?>
+        </div>
+      </div><?php odin_paging_nav(); ?><?php else: ?><?php get_template_part( 'content', 'none' ); ?><?php endif ?>
     </main><?php if($layout == "sidebar"): ?>
     <div class="hidden-xs hidden-sm"><?php get_sidebar(); ?>
     </div><?php endif ?>
@@ -72,7 +81,7 @@ var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
 ); ?>
       </div>
       <div>
-        <p> &copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ) ?></a> <?php echo _e( 'All rights reserved', 'odin' ) . " | " . sprintf( __( 'Powered by the <a href="%s" rel="nofollow" target="_blank">Odin</a> forces and <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'odin' ), 'http://wpod.in/', 'http://wordpress.org/' );  ?>
+        <p> &copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>">Guaxinim Games</a> <?php echo _e( 'All rights reserved', 'odin' ) ?>
         </p>
       </div>
     </div>

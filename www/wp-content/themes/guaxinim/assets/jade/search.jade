@@ -4,10 +4,14 @@ block main
 		header.page-header
 			h1.page-title
 				- printf( __( 'Search Results for: %s', 'odin' ), get_search_query() );
-			
-		- while ( have_posts() ) : the_post();
-			- get_template_part( 'content', get_post_format() );
-		- endwhile
+		.masonry
+			.grid
+				.grid-sizer(class="col-xs-12 col-sm-6 col-md-4 col-lg-4")
+				- while ( have_posts() ) : the_post();
+					.grid-item(class="col-xs-12 col-sm-6 col-md-4 col-lg-4")
+						.grid-item-content.margin
+							- get_template_part( 'content', get_post_format() );
+				- endwhile
 			
 		- odin_paging_nav();
 	- else:

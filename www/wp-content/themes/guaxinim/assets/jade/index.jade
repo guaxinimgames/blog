@@ -40,14 +40,19 @@ body("<?php body_class(); ?>")
 				}
 			main#content(class!="<?php echo $_class; ?>",tabindex="-1",role="main")
 				block main
-						- if(have_posts()):
-							- while ( have_posts() ) : the_post();
-								- get_template_part( 'content', get_post_format() );
-							- endwhile;
-							- odin_paging_nav();
-						- else:
-							- get_template_part( 'content', 'none' );
-						- endif
+					- if(have_posts()):
+						.masonry
+							.grid
+								.grid-sizer(class="col-xs-12 col-sm-6 col-md-4 col-lg-4")
+								- while ( have_posts() ) : the_post();
+									.grid-item(class="col-xs-12 col-sm-6 col-md-4 col-lg-4")
+										.grid-item-content.margin
+											- get_template_part( 'content', get_post_format() );
+								- endwhile;
+						- odin_paging_nav();
+					- else:
+						- get_template_part( 'content', 'none' );
+					- endif
 			block sidebar
 				- if($layout == "sidebar"):
 					.hidden-xs.hidden-sm

@@ -50,9 +50,9 @@ var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <h1 class="text-center">Últimas Postagens</h1><?php $itens = array();
-foreach(get_posts(array('post_type' => 'post')) as $key => $value) {
+foreach(get_posts(array('post_type' => 'post', 'numberposts' => 3)) as $key => $value) {
 	array_push($itens, (object) array(
-		'src' => wp_get_attachment_image_src( get_post_thumbnail_id($value->ID), 'medium' )['0'],
+		'src' => wp_get_attachment_image_src( get_post_thumbnail_id($value->ID), 'large' )['0'],
 		'title' => $value->post_title,
 		'href' => get_permalink($value->ID)
 		)
@@ -80,7 +80,7 @@ if(isset($value->src)){
 	$src = $value->src;
 }
  ?>
-                <div data-src="<?php echo $src ?>" class="item <?php echo ($key == 0)? 'active' : '' ?>"><?php if(isset($value->href)): ?><a href="<?php echo $value->href ?>" target="<?php echo isset($value->target)? $value->target : '_blank' ?>"></a><?php endif ?>
+                <div data-src="<?php echo $src ?>" class="item <?php echo ($key == 0)? 'active' : '' ?>"><?php if(isset($value->href)): ?><a href="<?php echo $value->href ?>" target="<?php echo isset($value->target)? $value->target : '_self' ?>"></a><?php endif ?>
                   <div style="background-image:<?php echo "url({$src});" ?>" class="slider-size">
                     <div class="carousel-caption"><?php $title = null;
 if(isset($value->title)){
@@ -112,13 +112,14 @@ if(isset($value->sliders_post_format_field_images_repeater_description)){
 $item->name = $value->name;
 $item->href = get_term_link($value->term_id);
 $item->src = get_field('category_image', $value);
+$item->_class = "img-category";
 $item->target = "_self";
 array_push($masonry, $item);  ?><?php endforeach ?>
             <div class="masonry margin">
               <div class="grid">
                 <div class="grid-sizer col-xs-12 col-sm-4 col-md-4 col-lg-4"></div><?php foreach ($masonry as $item): ?>
                 <div class="grid-item col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                  <div class="grid-item-content"><a href="<?php echo $item->href ?>"></a><img src="<?php echo $item->src ?>" class="img-responsive">
+                  <div class="grid-item-content"><a href="<?php echo $item->href ?>"></a><img src="<?php echo $item->src ?>" class="img-responsive <?php echo $item->_class ?>">
                     <h3 class="text-center"><?php echo $item->name; ?></h3>
                   </div>
                 </div><?php endforeach ?>
@@ -156,7 +157,7 @@ array_push($masonry, $item);  ?><?php endforeach ?>
 ); ?>
       </div>
       <div>
-        <p> &copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ) ?></a> <?php echo _e( 'All rights reserved', 'odin' ) . " | " . sprintf( __( 'Powered by the <a href="%s" rel="nofollow" target="_blank">Odin</a> forces and <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'odin' ), 'http://wpod.in/', 'http://wordpress.org/' );  ?>
+        <p> &copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>">Guaxinim Games</a> <?php echo _e( 'All rights reserved', 'odin' ) ?>
         </p>
       </div>
     </div>

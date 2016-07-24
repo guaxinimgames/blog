@@ -6,7 +6,7 @@ mixin masonry(_class)
 				.grid-item(class="#{_class}")
 					.grid-item-content
 						a(href!="<?php echo $item->href ?>")
-						img.img-responsive(src!="<?php echo $item->src ?>")
+						img.img-responsive(src!="<?php echo $item->src ?>", class!="<?php echo $item->_class ?>")
 						h3.text-center!= $item->name
 			- endforeach
 	- $masonry = null;

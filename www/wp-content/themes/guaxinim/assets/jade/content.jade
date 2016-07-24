@@ -1,0 +1,31 @@
+article(id!="post-<?php echo the_ID() ?>")
+	- if ( is_single() ):
+		header.entry-header.margin
+			- the_title( '<h1 class="entry-title">', '</h1>' );
+			.entry-meta
+				- odin_posted_on();
+		.entry-content
+			:php
+				the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'odin' ) );
+				wp_link_pages( array(
+					'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'odin' ) . '</span>',
+					'after'       => '</div>',
+					'link_before' => '<span>',
+					'link_after'  => '</span>',
+				) );
+		footer.entry-meta
+		- if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) ) :
+			span.cat-links!= __( 'Posted in:', 'odin' ) . ' ' . get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'odin' ) );
+		- endif
+		- the_tags( '<span class="tag-links">' . __( 'Tagged as:', 'odin' ) . ' ', ', ', '</span>' );
+	- else:
+		a.block(href!="<?php echo esc_url( get_permalink() ) ?>", title!="<?php echo the_title() ?>")
+		h3.entry-title.text-center.text-uppercase!= get_the_title()
+		- $img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium' )['0'];
+		- if(!is_null($img)):
+			img.img-responsive.margin(src!="<?php echo $img ?>", alt!="<?php echo get_the_title() ?>", data-src!="<?php echo $img ?>")
+		- endif
+		p.entry-summary.text-justify!= get_the_excerpt()
+	- endif
+
+	//- wp_get_attachment_image_src( get_post_thumbnail_id($value->ID), 'medium' )['0']

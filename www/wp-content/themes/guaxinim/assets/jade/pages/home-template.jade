@@ -9,9 +9,9 @@ block main
 			h1.text-center Últimas Postagens
 			:php
 				$itens = array();
-				foreach(get_posts(array('post_type' => 'post')) as $key => $value) {
+				foreach(get_posts(array('post_type' => 'post', 'numberposts' => 3)) as $key => $value) {
 					array_push($itens, (object) array(
-						'src' => wp_get_attachment_image_src( get_post_thumbnail_id($value->ID), 'medium' )['0'],
+						'src' => wp_get_attachment_image_src( get_post_thumbnail_id($value->ID), 'large' )['0'],
 						'title' => $value->post_title,
 						'href' => get_permalink($value->ID)
 						)
@@ -29,6 +29,7 @@ block main
 					$item->name = $value->name;
 					$item->href = get_term_link($value->term_id);
 					$item->src = get_field('category_image', $value);
+					$item->_class = "img-category";
 					$item->target = "_self";
 					array_push($masonry, $item); 
 			- endforeach

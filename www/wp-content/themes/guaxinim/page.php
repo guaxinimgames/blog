@@ -73,7 +73,7 @@ var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
 ); ?>
       </div>
       <div>
-        <p> &copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ) ?></a> <?php echo _e( 'All rights reserved', 'odin' ) . " | " . sprintf( __( 'Powered by the <a href="%s" rel="nofollow" target="_blank">Odin</a> forces and <a href="%s" rel="nofollow" target="_blank">WordPress</a>.', 'odin' ), 'http://wpod.in/', 'http://wordpress.org/' );  ?>
+        <p> &copy; <?php echo date('Y'); ?> <a href="<?php echo home_url(); ?>">Guaxinim Games</a> <?php echo _e( 'All rights reserved', 'odin' ) ?>
         </p>
       </div>
     </div>

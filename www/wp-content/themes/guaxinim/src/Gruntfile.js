@@ -94,19 +94,6 @@ module.exports = function( grunt ) {
 					}
 				}
 			},
-			pug: {
-				compile: {
-					options: {
-						data: {
-							debug: false,
-							pretty: true,
-						}
-					},
-					files: {
-						'<%= dirs.php %>/404.php': ['<%= dirs.jade %>/404.jade'],
-					}
-				}
-			},
 			compass: {
 				dist: {
 					options: {
@@ -427,6 +414,4 @@ module.exports = function( grunt ) {
 	grunt.registerTask( 'f', ['ftp'] );
 	grunt.registerTask( 'r', ['rsync'] );
 	grunt.registerTask( 'c', ['compress'] );
-	
-	grunt.registerTask( 'p', ['pug'] );
 };

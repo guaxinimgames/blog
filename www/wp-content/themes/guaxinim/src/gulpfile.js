@@ -39,4 +39,5 @@ gulp.task('jade', function() {
 });
 
 //DEFAULT TASK
-gulp.task('default', ['jade', 'watch']);
+gulp.task('default', ['jade']);
+gulp.task('w', ['watch']);

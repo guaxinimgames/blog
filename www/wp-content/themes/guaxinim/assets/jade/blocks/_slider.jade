@@ -50,7 +50,7 @@ mixin slider($slider)
 					.item(class!="<?php echo ($key == 0)? 'active' : '' ?>", data-src!="<?php echo $src ?>")
 						//- Make link (if its have)
 						- if(isset($value->href)):
-							a(href!="<?php echo $value->href ?>", target!="<?php echo isset($value->target)? $value->target : '_blank' ?>")
+							a(href!="<?php echo $value->href ?>", target!="<?php echo isset($value->target)? $value->target : '_self' ?>")
 						- endif
 						//- make image
 						.slider-size(style!='background-image:<?php echo "url({$src});" ?>')
