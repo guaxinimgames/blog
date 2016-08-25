@@ -1,0 +1,23 @@
+mixin author
+
+	section.author.margin
+		//- TODO: Label
+		:php
+			$author = (object) array(
+				'ID' => get_the_author_meta('ID'),
+				'name' => get_the_author_meta('display_name', get_the_author_id()),
+			);
+		article
+			header
+				h2.col-xs-12.col-sm-12.col-md-12 Sobre o Autor:
+			.col-xs-12.col-sm-6.col-md-4
+				.row.center-block
+					img.img-responsive.img-circle.margin(src!=echo('get_avatar_url(get_the_author_id())'), width="100")
+				.row.center-block.author-socials
+					- $socials = get_field('socials', "user_{$author->ID}");
+					+social
+			.col-xs-12.col-sm-6.col-md-8
+				h3.text-left!= $author->name
+				h4: a(href!=echo('"https://www.twitter.com/". get_field("twitter", "user_{$author->ID}")'))!= "@" . get_field("twitter", "user_{$author->ID}")
+				p!=get_the_author_description()
+			.clearfix

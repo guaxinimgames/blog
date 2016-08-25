@@ -48,7 +48,33 @@ var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
 } ?>
     <main id="content" tabindex="-1" role="main" class="<?php echo $_class; ?>">
       <div id="primary" class="<?php echo odin_classes_page_sidebar(); ?>">
-        <main id="main-content" role="main" class="site-main"><?php while ( have_posts() ) : the_post(); ?><?php get_template_part( 'content', get_post_format() ); ?><?php if ( comments_open() || get_comments_number() ) : ?><?php comments_template(); ?><?php endif ?><?php endwhile ?>
+        <main id="main-content" role="main" class="site-main"><?php while ( have_posts() ) : the_post();				 ?><?php get_template_part( 'content', get_post_format() );				 ?>
+            <section class="author margin"><?php $author = (object) array(
+	'ID' => get_the_author_meta('ID'),
+	'name' => get_the_author_meta('display_name', get_the_author_id()),
+); ?>
+              <article>
+                <header>
+                  <h2 class="col-xs-12 col-sm-12 col-md-12">Sobre o Autor:</h2>
+                </header>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                  <div class="row center-block"><img src="<?php echo get_avatar_url(get_the_author_id()) ?>" width="100" class="img-responsive img-circle margin"></div>
+                  <div class="row center-block author-socials"><?php $socials = get_field('socials', "user_{$author->ID}"); ?><?php if(isset($socials) && is_array($socials)): ?>
+                      <div class="social-block">
+                        <ul><?php foreach($socials as $social): ?>
+                          <li class="list-unstyled"><a href="<?php echo $social['url'] ?>" target="_blank"><i class="fa fa-<?php echo $social['name'] ?>"></i></a></li><?php endforeach ?>
+                        </ul>
+                      </div><?php endif ?><?php $socials = null; ?>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-8">
+                  <h3 class="text-left"><?php echo $author->name; ?></h3>
+                  <h4><a href="<?php echo "https://www.twitter.com/". get_field("twitter", "user_{$author->ID}") ?>"><?php echo "@" . get_field("twitter", "user_{$author->ID}"); ?></a></h4>
+                  <p><?php echo get_the_author_description(); ?></p>
+                </div>
+                <div class="clearfix"></div>
+              </article>
+            </section><?php if ( comments_open() ) : ?><?php comments_template(); ?><?php endif ?><?php endwhile ?>
         </main>
       </div>
     </main><?php if($layout == "sidebar"): ?>

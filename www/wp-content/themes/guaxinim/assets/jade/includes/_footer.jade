@@ -1,6 +1,7 @@
 include ../blocks/_blocks
 footer#footer(role="contentinfo")
 	div.container-fluid
+		- $socials = get_field('socials', 'options');
 		+social
 	div.container-fluid
 		div.menu

@@ -6,3 +6,4 @@ javascripts_dir = '../assets/js'
 relative_assets = true
 line_comments = false
 preferred_syntax = :scss
+output_style = :compressed
