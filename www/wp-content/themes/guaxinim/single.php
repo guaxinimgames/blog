@@ -58,20 +58,20 @@ var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
                 <header>
                   <h2 class="col-xs-12 col-sm-12 col-md-12">Sobre o Autor:</h2>
                 </header>
-                <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="col-xs-12 col-sm-4 col-md-4">
                   <div class="row center-block"><?php if(!$author->image) {
 	$author->image = get_template_directory_uri() . "/assets/images/author_default.jpg";
 } ?><img src="<?php echo get_avatar_url(get_the_author_id()) ?>" width="100" class="img-responsive img-circle margin">
                   </div>
                   <div class="row center-block author-socials"><?php $socials = get_field('socials', "user_{$author->ID}"); ?><?php if(isset($socials) && is_array($socials)): ?>
                       <div class="social-block">
-                        <ul><?php foreach($socials as $social): ?>
-                          <li class="list-unstyled"><a href="<?php echo $social['url'] ?>" target="_blank"><i class="fa fa-<?php echo $social['name'] ?>"></i></a></li><?php endforeach ?>
+                        <ul class="list-unstyled"><?php foreach($socials as $social): ?>
+                          <li><a href="<?php echo $social['url'] ?>" target="_blank"><i class="fa fa-<?php echo $social['name'] ?>"></i></a></li><?php endforeach ?>
                         </ul>
                       </div><?php endif ?><?php $socials = null; ?>
                   </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-8">
+                <div class="col-xs-12 col-sm-8 col-md-8">
                   <h3 class="text-left"><?php echo $author->name; ?></h3><?php if(get_field("twitter", "user_{$author->ID}")): ?>
                   <h4><a target="_blank" href="<?php echo "https://www.twitter.com/". get_field("twitter", "user_{$author->ID}") ?>"><?php echo "@" . get_field("twitter", "user_{$author->ID}"); ?></a></h4><?php endif ?>
                   <p><?php echo get_the_author_description(); ?></p>
@@ -88,8 +88,8 @@ var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
   <footer id="footer" role="contentinfo">
     <div class="container-fluid"><?php $socials = get_field('socials', 'options'); ?><?php if(isset($socials) && is_array($socials)): ?>
         <div class="social-block">
-          <ul><?php foreach($socials as $social): ?>
-            <li class="list-unstyled"><a href="<?php echo $social['url'] ?>" target="_blank"><i class="fa fa-<?php echo $social['name'] ?>"></i></a></li><?php endforeach ?>
+          <ul class="list-unstyled"><?php foreach($socials as $social): ?>
+            <li><a href="<?php echo $social['url'] ?>" target="_blank"><i class="fa fa-<?php echo $social['name'] ?>"></i></a></li><?php endforeach ?>
           </ul>
         </div><?php endif ?><?php $socials = null; ?>
     </div>

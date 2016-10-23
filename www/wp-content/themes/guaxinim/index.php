@@ -63,8 +63,8 @@ var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
   <footer id="footer" role="contentinfo">
     <div class="container-fluid"><?php $socials = get_field('socials', 'options'); ?><?php if(isset($socials) && is_array($socials)): ?>
         <div class="social-block">
-          <ul><?php foreach($socials as $social): ?>
-            <li class="list-unstyled"><a href="<?php echo $social['url'] ?>" target="_blank"><i class="fa fa-<?php echo $social['name'] ?>"></i></a></li><?php endforeach ?>
+          <ul class="list-unstyled"><?php foreach($socials as $social): ?>
+            <li><a href="<?php echo $social['url'] ?>" target="_blank"><i class="fa fa-<?php echo $social['name'] ?>"></i></a></li><?php endforeach ?>
           </ul>
         </div><?php endif ?><?php $socials = null; ?>
     </div>

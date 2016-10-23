@@ -8,7 +8,7 @@
 			@include user-select(none);
 			cursor: default;
 			li {
-				background: #cccccc;
+				background: $light-gray;
 			}
 		}
 	}

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pipa v1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-23 22:12-0300\n"
-"PO-Revision-Date: 2016-07-23 22:12-0300\n"
+"POT-Creation-Date: 2016-08-27 17:21-0300\n"
+"PO-Revision-Date: 2016-08-27 17:42-0300\n"
 "Last-Translator: Rafael Funchal <rafaelfunchal@gmail.com>\n"
 "Language-Team: Tinpix\n"
 "Language: pt_BR\n"
@@ -30,30 +30,30 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-9: assets/images\n"
 
 # @ odin
-#: 404.php:16 archive.php:16 category.php:16 index.php:16 master.php:1
-#: page.php:16 pages/home-template.php:16 pages/options.php:12 search.php:16
-#: single.php:16 test.php:12
+#: 404.php:16 archive.php:16 author.php:16 category.php:16 index.php:16
+#: master.php:1 page.php:16 pages/home-template.php:16 pages/options.php:12
+#: search.php:16 single.php:16 test.php:12
 msgid "Skip to content"
 msgstr "Pular para o conteúdo"
 
 # @ odin
-#: 404.php:26 archive.php:26 category.php:26 index.php:26 master.php:1
-#: page.php:26 pages/home-template.php:26 pages/options.php:29 search.php:26
-#: single.php:26 test.php:29
+#: 404.php:26 archive.php:26 author.php:26 category.php:26 index.php:26
+#: master.php:1 page.php:26 pages/home-template.php:26 pages/options.php:29
+#: search.php:26 single.php:26 test.php:29
 msgid "Toggle navigation"
 msgstr "Alternar navegação"
 
 # @ odin
-#: 404.php:30 404.php:59 archive.php:30 category.php:30 index.php:30
-#: master.php:1 page.php:30 pages/home-template.php:30 pages/options.php:33
-#: search.php:30 single.php:30 test.php:33
+#: 404.php:30 404.php:59 archive.php:30 author.php:30 category.php:30
+#: index.php:30 master.php:1 page.php:30 pages/home-template.php:30
+#: pages/options.php:33 search.php:30 single.php:30 test.php:33
 msgid "Search:"
 msgstr "Pesquisar:"
 
 # @ odin
 #: 404.php:33 404.php:35 404.php:62 404.php:64 archive.php:33 archive.php:35
-#: category.php:33 category.php:35 index.php:33 index.php:35 master.php:1
-#: page.php:33 page.php:35 pages/home-template.php:33
+#: author.php:33 author.php:35 category.php:33 category.php:35 index.php:33
+#: index.php:35 master.php:1 page.php:33 page.php:35 pages/home-template.php:33
 #: pages/home-template.php:35 pages/options.php:36 pages/options.php:38
 #: search.php:33 search.php:35 searchform.php:12 single.php:33 single.php:35
 #: test.php:36 test.php:38
@@ -72,35 +72,35 @@ msgstr ""
 "Parece que nada foi encontrado neste local. Talvez tentar uma pesquisa?"
 
 # @ odin
-#: 404.php:93 archive.php:75 category.php:78 index.php:84 page.php:76
-#: pages/home-template.php:160 pages/options.php:76 search.php:79 single.php:79
-#: test.php:2002
+#: 404.php:93 archive.php:75 author.php:85 category.php:85 index.php:84
+#: page.php:76 pages/home-template.php:160 pages/options.php:76 search.php:88
+#: single.php:109 test.php:2002
 msgid "All rights reserved"
 msgstr "Todos os direitos reservados"
 
 # @ odin
-#: _content.php:36 content.php:6
+#: _content.php:36 content.php:7
 msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Continue lendo <span class=\"meta-nav\">&rarr;</span>"
 
 # @ odin
-#: _content.php:38 content-page.php:17 content.php:8
+#: _content.php:38 content-page.php:17 content.php:9
 msgid "Pages:"
 msgstr "Páginas:"
 
 # @ odin
-#: _content.php:49 content.php:14
+#: _content.php:49 content.php:15
 msgid "Posted in:"
 msgstr "Publicado em:"
 
 # @ odin
-#: _content.php:49 content.php:14
+#: _content.php:49 content.php:15
 msgctxt "Used between list items, there is a space after the comma."
 msgid ", "
 msgstr ", "
 
 # @ odin
-#: _content.php:51 content.php:14
+#: _content.php:51 content.php:15
 msgid "Tagged as:"
 msgstr "Marcado como:"
 

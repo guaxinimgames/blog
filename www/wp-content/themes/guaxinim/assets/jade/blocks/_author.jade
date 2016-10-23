@@ -11,7 +11,7 @@ mixin author
 		article
 			header
 				h2.col-xs-12.col-sm-12.col-md-12 Sobre o Autor:
-			.col-xs-12.col-sm-6.col-md-4
+			.col-xs-12.col-sm-4.col-md-4
 				.row.center-block
 					:php
 						if(!$author->image) {
@@ -21,7 +21,7 @@ mixin author
 				.row.center-block.author-socials
 					- $socials = get_field('socials', "user_{$author->ID}");
 					+social
-			.col-xs-12.col-sm-6.col-md-8
+			.col-xs-12.col-sm-8.col-md-8
 				h3.text-left!= $author->name
 				- if(get_field("twitter", "user_{$author->ID}")):
 					h4: a(target="_blank", href!=echo('"https://www.twitter.com/". get_field("twitter", "user_{$author->ID}")'))!= "@" . get_field("twitter", "user_{$author->ID}")

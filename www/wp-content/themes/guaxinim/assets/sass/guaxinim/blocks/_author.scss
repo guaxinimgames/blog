@@ -4,10 +4,13 @@ section.author {
 			margin: 0;
 		}
 		padding: 20px 0;
-		background: darken(#cccccc, 10);
+		background: darken($light-gray, 10);
 		@include border-radius(10px);		
 		.author-socials {
 			text-align: center;
+			.social-block ul li {
+				padding: 0 2px;
+			}
 		}
 	}
 }

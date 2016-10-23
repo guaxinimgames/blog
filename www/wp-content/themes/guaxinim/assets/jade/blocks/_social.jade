@@ -1,9 +1,9 @@
 mixin social
 	- if(isset($socials) && is_array($socials)):
 		div.social-block
-			ul
+			ul.list-unstyled
 				- foreach($socials as $social):
-					li.list-unstyled
+					li
 						a(href!="<?php echo $social['url'] ?>", target="_blank")
 							i.fa(class!="fa-<?php echo $social['name'] ?>")
 				- endforeach

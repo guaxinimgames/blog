@@ -1,0 +1,14 @@
+.ad {
+	.ad-inner {
+		background-color: darken($light-gray, 5);
+	}
+	&.box {
+		.ad-inner {
+			width: 200px;
+			height: 200px;
+		}
+	}
+	.span {
+		font-size: 10px;
+	}
+}
