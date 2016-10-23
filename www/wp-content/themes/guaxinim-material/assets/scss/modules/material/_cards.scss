@@ -1,0 +1,54 @@
+.mdl-card{
+	width:100%;
+	a {
+		text-decoration: none;
+	}
+	.mdl-card__media{
+		min-height:284px;
+		padding: 10px 20px;
+		display:table;
+		width:100%;
+		position: relative;
+		.media-content {
+			position: relative;
+			display:table-cell;
+			vertical-align:bottom;
+			z-index: 1;
+			.title{
+				text-align:left;
+				h2 {
+					font-weight: 400;
+					font-size: 34px;
+				}
+			}
+		}
+	}
+	.mdl-card__supporting-text{
+    min-height: 80px;
+    width: 100%;
+		&.meta{
+      display: table;
+      .meta-content {
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+			.avatar, .info{
+				display:block;
+				float:left;
+			}
+			.avatar{
+				width:44px;
+				height:44px;
+				margin-right:20px;
+				background:center center no-repeat;
+				background-size:cover;
+			}
+			.info{
+				strong, span{
+					display:block;
+				}
+			}
+		}
+	}
+}

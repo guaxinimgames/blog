@@ -197,114 +197,76 @@ function sendEmail() {
 add_action('wp_ajax_sendEmail', 'sendEmail');
 add_action('wp_ajax_nopriv_sendEmail', 'sendEmail');
 
-function get_segment($position) {
-	$uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // get the uri
-	//split in array, remove the empties, reset indexes
-	$uri_segments = array_values(array_filter(explode('/', $uri_path)));
+function get_time_ago() {
 
-	// get the desired position, backwards if negative
-	$position = ($position < 0)? ((sizeof($uri_segments)-1) + $position) : $position;
-	$position = ($position < 0)? 0 : $position;
+	global $post;
 
-	if(isset($uri_segments[$position]))
-	{
-		return $uri_segments[$position];
+	$date = get_post_time('G', true, $post);
+
+	/**
+	 * Where you see 'themeblvd' below, you'd
+	 * want to replace those with whatever term
+	 * you're using in your theme to provide
+	 * support for localization.
+	 */
+
+	// Array of time period chunks
+	$chunks = array(
+		array( 60 * 60 * 24 * 365 , __( 'ano', 'themeblvd' ), __( 'anos', 'themeblvd' ) ),
+		array( 60 * 60 * 24 * 30 , __( 'mês', 'themeblvd' ), __( 'mêses', 'themeblvd' ) ),
+		array( 60 * 60 * 24 * 7, __( 'semana', 'themeblvd' ), __( 'semanas', 'themeblvd' ) ),
+		array( 60 * 60 * 24 , __( 'dia', 'themeblvd' ), __( 'dias', 'themeblvd' ) ),
+		array( 60 * 60 , __( 'hora', 'themeblvd' ), __( 'horas', 'themeblvd' ) ),
+		array( 60 , __( 'minuto', 'themeblvd' ), __( 'minutos', 'themeblvd' ) ),
+		array( 1, __( 'segundo', 'themeblvd' ), __( 'segundos', 'themeblvd' ) )
+	);
+
+	if ( !is_numeric( $date ) ) {
+		$time_chunks = explode( ':', str_replace( ' ', ':', $date ) );
+		$date_chunks = explode( '-', str_replace( ' ', '-', $date ) );
+		$date = gmmktime( (int)$time_chunks[1], (int)$time_chunks[2], (int)$time_chunks[3], (int)$date_chunks[1], (int)$date_chunks[2], (int)$date_chunks[0] );
 	}
-	else
-	{
-		return null;
+
+	$current_time = current_time( 'mysql', $gmt = 0 );
+	$newer_date = strtotime( $current_time );
+
+	// Difference in seconds
+	$since = $newer_date - $date;
+
+	// Something went wrong with date calculation and we ended up with a negative date.
+	if ( 0 > $since )
+		return __( 'sometime', 'themeblvd' );
+
+	/**
+	 * We only want to output one chunks of time here, eg:
+	 * x years
+	 * xx months
+	 * so there's only one bit of calculation below:
+	 */
+
+	//Step one: the first chunk
+	for ( $i = 0, $j = count($chunks); $i < $j; $i++) {
+		$seconds = $chunks[$i][0];
+
+		// Finding the biggest chunk (if the chunk fits, break)
+		if ( ( $count = floor($since / $seconds) ) != 0 )
+			break;
 	}
+
+	// Set output var
+	$output = ( 1 == $count ) ? '1 '. $chunks[$i][1] : $count . ' ' . $chunks[$i][2];
+
+
+	if ( !(int)trim($output) ){
+		$output = '0 ' . __( 'seconds', 'themeblvd' );
+	}
+
+	// $output .= __(' atrás', 'themeblvd');
+	$output = __('Há ', 'themeblvd') . $output;
+
+	return $output;
 }
 
-
-function post_to_term($post_type) {
-	switch ($post_type) {
-		case 'companies':
-			$result = 'companies_categories';
-			break;
-		case 'events':
-			$result = 'events_categories';
-			break;
-		case 'looks':
-			$result = 'looks_categories';
-			break;
-		case 'news':
-			$result = 'news_categories';
-			break;
-		case 'shows':
-			$result = 'shows_categories';
-			break;
-		case 'trends':
-			$result = 'trends_categories';
-			break;
-		case 'videos':
-			$result = 'videos_categories';
-			break;
-		default:
-			$result = 'category';
-			break;
-	}
-
-	return $result;
-}
-
-function generate_breadcrumbs($wp_query) {
-	$breadcrumbs = array();
-	$queryObj = $wp_query->get_queried_object();
-	$queryType = gettype($queryObj);
-
-	$className = get_class($queryObj);
-	switch ($className) {
-		case 'WP_Term':
-			$postTypes = get_post_types();
-
-			$ptypes = array();
-			foreach($postTypes as $posttype)
-			{
-				$ptypeobj = get_post_type_object($posttype);
-				if(!is_null($ptypeobj->rewrite['slug']))
-				{
-					$ptypes[ $ptypeobj->rewrite['slug']] = $ptypeobj;
-				}
-			}
-			$postType = $ptypes[get_segment(-1)];
-
-			$postTypeUrl = get_post_type_archive_link($postType->name);
-
-			$breadcrumbs[] = (object) array(
-				'name' => $postType->label,
-				'url' => $postTypeUrl
-			);
-
-			$breadcrumbs[] = (object) array(
-				'name' => $queryObj->name,
-				'url' => get_term_link($queryObj)
-			);
-			break;
-		case 'WP_Post_Type':
-			$breadcrumbs[] = (object) array(
-				'name' => $queryObj->label
-			);
-			break;
-		case 'WP_Post':
-			$posttype = get_post_type($queryObj);
-			$breadcrumbs[] = (object) array(
-				'name' => get_post_type_object($posttype)->label,
-				'url' => get_post_type_archive_link($posttype)
-			);
-
-			$taxonomy = reset(wp_get_post_terms($queryObj->ID, "{$posttype}_categories"));
-			$breadcrumbs[] = (object) array(
-				'name' => $taxonomy->name,
-				'url' => get_term_link($taxonomy)
-			);
-			break;
-		default:
-			break;
-	}
-
-	return $breadcrumbs;
-}
-
-
+// Filter our get_time_ago() function into WP's the_time() function
+add_filter('get_time_ago', 'get_time_ago');
 /* DON'T DELETE THIS CLOSING TAG */ ?>

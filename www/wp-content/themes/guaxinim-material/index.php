@@ -15,14 +15,31 @@
 <body <?php body_class(); ?>>
   <div id="fb-root"></div>
   <script>var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";</script>
-  <div class="main-container">
-    <div class="main-content">
-      <div id="wrapper">
-        <main id="content" tabindex="-1" role="main">
-          <div class="cf"></div>
-        </main>
+  <div class="main-container mdl-layout__container">
+    <div id="wrapper">
+      <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
+        <div class="main-grid mdl-grid">
+        </div>
+        <div class="cf"></div>
+      </main>
+    </div>
+    <footer id="footer" role="contentinfo" class="mdl-mini-footer">
+      <div class="mdl-mini-footer--left-section">
+            <div class="social-block text-left">
+              <ul><?php $icons = array (
+		'facebook' 	=> "facebook",
+		'twitter'		=>	"twitter",
+		'pinterest'	=>	"pinterest-p",
+		'youtube'		=>	"youtube-play",
+		'instagram'	=>	"instagram",
+		'linkedin'	=>	"linkedin"
+);
+ ?><?php if(have_rows('socials', 'options')): while(have_rows('socials', 'options')): the_row() ?><?php $_name = get_sub_field('name'); ?><?php $_url = get_sub_field('url'); ?><?php $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
+                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endwhile;endif ?>
+              </ul>
+            </div>
       </div>
-      <footer id="footer" role="contentinfo">
+      <div class="mdl-mini-footer--right-section">
         <div id="copyright">
           <div class="wrapper-footer col-xs-12 col-sm-10 col-md-10">
             <p>&copy; Copyright 2005-<?php echo date('Y'); ?> <?php echo bloginfo('name') ?>. Todos os direitos reservados.</p><a href="http://www.tinpix.com" title="Tinpix Digital" target="_blank" id="tinpix-logo"></a>
@@ -30,7 +47,7 @@
           </div>
           <div class="clear"></div>
         </div>
-      </footer><?php wp_footer(); ?>
-    </div>
+      </div>
+    </footer><?php wp_footer(); ?>
   </div>
 </body>

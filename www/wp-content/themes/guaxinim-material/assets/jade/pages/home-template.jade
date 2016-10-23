@@ -4,3 +4,29 @@ prepend header
 append styles
 	link(rel="stylesheet", href!=css("pages/home/home.css"))
 block main
+	.mdl-cell.mdl-cell--8-col
+			.mdl-card.mdl-shadow--2dp
+				a(href="#")
+					.mdl-card__media.mdl-color-text--grey-50
+						.title
+							h2.mdl-card__title-text Welcome
+				.mdl-card__supporting-text.meta.mdl-color-text--grey-600
+					a(href="#")
+						.meta-content
+							.avatar.img-circle(style!=background('tests/avatar.jpg'))
+							.info
+								strong Diego Lopes
+								span 2 Dias atrás
+	.mdl-cell.mdl-cell--8-col.mdl-cell--4-col-desktop
+		.gxn-card.mdl-card.mdl-shadow--2dp
+			.mdl-card__media
+			.mdl-card__supporting-text.meta.mdl-color-text--grey-600
+				.meta-content
+					.info
+						strong Bem vindo ao blog
+	- foreach(get_posts(array('post_type' => 'post', 'numberposts' => 10)) as $post):
+		- setup_postdata($post)
+			.mdl-cell
+				+post-card
+		- wp_reset_postdata()
+	- endforeach

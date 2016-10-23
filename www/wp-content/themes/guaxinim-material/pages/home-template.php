@@ -16,14 +16,75 @@
 <body <?php body_class(); ?>>
   <div id="fb-root"></div>
   <script>var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";</script>
-  <div class="main-container">
-    <div class="main-content"><?php //Template Name: Home ?>
-      <div id="wrapper">
-        <main id="content" tabindex="-1" role="main">
-          <div class="cf"></div>
-        </main>
+  <div class="main-container mdl-layout__container"><?php //Template Name: Home ?>
+    <div id="wrapper">
+      <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
+        <div class="main-grid mdl-grid">
+          <div class="mdl-cell mdl-cell--8-col">
+            <div class="mdl-card mdl-shadow--2dp"><a href="#">
+                <div class="mdl-card__media mdl-color-text--grey-50">
+                  <div class="title">
+                    <h2 class="mdl-card__title-text">Welcome</h2>
+                  </div>
+                </div></a>
+              <div class="mdl-card__supporting-text meta mdl-color-text--grey-600"><a href="#">
+                  <div class="meta-content">
+                    <div style="background-image:url('<?php echo get_template_directory_uri() . "/library/images/tests/avatar.jpg" ?>')" class="avatar img-circle"></div>
+                    <div class="info"><strong>Diego Lopes</strong><span>2 Dias atrás</span></div>
+                  </div></a></div>
+            </div>
+          </div>
+          <div class="mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop">
+            <div class="gxn-card mdl-card mdl-shadow--2dp">
+              <div class="mdl-card__media"></div>
+              <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+                <div class="meta-content">
+                  <div class="info"><strong>Bem vindo ao blog</strong></div>
+                </div>
+              </div>
+            </div>
+          </div><?php foreach(get_posts(array('post_type' => 'post', 'numberposts' => 10)) as $post): ?><?php setup_postdata($post) ?>
+          <div class="mdl-cell">
+            <div class="mdl-card mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+  if(is_array($img)) {
+    $img = reset($img);
+  } ?><a href="<?php echo get_the_permalink() ?>">
+                <div style="background-image:url('<?php echo $img?>')" class="mdl-card__media mdl-color-text--grey-50">
+                  <div class="overlay-shadow"></div>
+                  <div class="media-content"> 
+                    <div class="title">
+                      <h2 class="mdl-card__title-text"><?php echo get_the_title();; ?></h2>
+                    </div>
+                  </div>
+                </div></a>
+              <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+                <div class="meta-content"></div>
+                <div style="background-image:url('<?php echo get_avatar_url(get_the_author_id())?>')" class="avatar img-circle"></div>
+                <div class="info"><strong><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></strong><span><?php echo get_time_ago()	; ?></span></div>
+              </div>
+            </div>
+          </div><?php wp_reset_postdata() ?><?php endforeach ?>
+        </div>
+        <div class="cf"></div>
+      </main>
+    </div>
+    <footer id="footer" role="contentinfo" class="mdl-mini-footer">
+      <div class="mdl-mini-footer--left-section">
+            <div class="social-block text-left">
+              <ul><?php $icons = array (
+		'facebook' 	=> "facebook",
+		'twitter'		=>	"twitter",
+		'pinterest'	=>	"pinterest-p",
+		'youtube'		=>	"youtube-play",
+		'instagram'	=>	"instagram",
+		'linkedin'	=>	"linkedin"
+);
+ ?><?php if(have_rows('socials', 'options')): while(have_rows('socials', 'options')): the_row() ?><?php $_name = get_sub_field('name'); ?><?php $_url = get_sub_field('url'); ?><?php $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
+                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endwhile;endif ?>
+              </ul>
+            </div>
       </div>
-      <footer id="footer" role="contentinfo">
+      <div class="mdl-mini-footer--right-section">
         <div id="copyright">
           <div class="wrapper-footer col-xs-12 col-sm-10 col-md-10">
             <p>&copy; Copyright 2005-<?php echo date('Y'); ?> <?php echo bloginfo('name') ?>. Todos os direitos reservados.</p><a href="http://www.tinpix.com" title="Tinpix Digital" target="_blank" id="tinpix-logo"></a>
@@ -31,7 +92,7 @@
           </div>
           <div class="clear"></div>
         </div>
-      </footer><?php wp_footer(); ?>
-    </div>
+      </div>
+    </footer><?php wp_footer(); ?>
   </div>
 </body>
