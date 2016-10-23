@@ -1,0 +1,35 @@
+.ad-block {
+	position: relative;
+	.ad-inner {
+		display: block;
+	}
+	label {
+		font-size: 10px;
+		padding: 5px 0;
+	}
+	&.super-leaderboard {
+		margin: 15px auto;
+		.ad-inner {
+			width: 970px;
+			height: 90px;
+		}
+	}
+	&.medium-rectangle {
+		.ad-inner {
+			width: 300px;
+			height: 250px;
+		}
+	}
+	&.tall-rectangle {
+		.ad-inner {
+			width: 200px;
+			height: 466px;
+		}
+	}
+	&.small-rectangle {
+		.ad-inner {
+			width: 300px;
+			height: 150px;
+		}	
+	}
+}

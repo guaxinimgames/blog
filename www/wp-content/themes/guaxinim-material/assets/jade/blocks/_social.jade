@@ -1,0 +1,10 @@
+mixin social(classes)
+	.social-block(class=classes)
+		ul
+			- $socials = ['facebook', 'twitter', 'pinterest', 'youtube', 'instagram', 'linkedin'];
+			- $fa_icons = ['facebook', 'twitter', 'pinterest-p', 'youtube-play', 'instagram', 'linkedin'];
+			- foreach($socials  as $i=>$social):
+				li(class!=echo('$social'))
+					a(href!=echo('get_field("social_{$social}" ,"options")'), target="_blank")
+						i.fa(class!=echo('"fa-{$fa_icons[$i]}"'))
+			- endforeach

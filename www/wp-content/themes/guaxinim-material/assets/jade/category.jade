@@ -1,0 +1,19 @@
+extends index
+block main
+	- if ( have_posts() ) :
+		header.page-header
+		- the_archive_title( '<h1 class="page-title">', '</h1>' );
+		- the_archive_description( '<div class="taxonomy-description">', '</div>' );
+		
+		.masonry
+			.grid
+				.grid-sizer(class="col-xs-12 col-sm-6 col-md-4 col-lg-4")
+				- while ( have_posts() ) : the_post();
+					.grid-item(class="col-xs-12 col-sm-6 col-md-4 col-lg-4")
+						.grid-item-content.margin
+							- get_template_part( 'content', get_post_format() );
+				- endwhile
+				- wp_reset_postdata();
+	- else:
+		- get_template_part( 'content', 'none' );
+	- endif

@@ -1,0 +1,14 @@
+extends index.jade
+
+block templateName
+	<?php /*Template Name: 404 Page*/ ?>
+
+block main
+	//Page content	
+	section(id="404",itemscope,itemprop="mainContentOfPage",itemtype="http://schema.org/Blog").no-banner
+		article(role="article",itemscope,itemprop="blogPost",itemtype="http://schema.org/BlogPosting").wrap.internal-content
+			.row
+				.col-xs-12.col-sm-12.col-md-5.col-lg-5
+					.post.col-xs-12.col-sm-12.col-md-12.col-lg-12
+						h2 :( Isso é embaraçoso
+						section(itemprop="articleBody") Não encontramos nenhum post nessa categoria. Você pode voltar à home e recomeçar ou voltar à #a(href="#",title="página")página anterior. 

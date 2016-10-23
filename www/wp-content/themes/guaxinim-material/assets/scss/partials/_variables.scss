@@ -1,0 +1,91 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Variables
+
+Here is where we declare all our variables like colors, fonts,
+base values, and defaults. We want to make sure this file ONLY
+contains variables that way our files don't get all messy.
+No one likes a mess.
+
+******************************************************************/
+
+/*********************
+GENERAL VARS
+*********************/
+
+/*********************
+COLORS
+*********************/
+$alert-yellow: #d0863f;
+$alert-red: #ff5936;
+$alert-green: #7d4024;
+$alert-blue: #7d4024;
+$black: #000000;
+$white: #ffffff;
+$light-gray: #e7ecee;
+$gray: #c9cacc;
+$text-color: $black;
+$meta-gray: $gray;
+$tan: #eceee5;
+$green: $alert-green;
+$bones-pink: #ff6c72;
+$blue: #7d4024;
+$link-color: #ff5936;
+$link-hover: darken($link-color, 9%);
+$border-color: #cccccc;
+$disabled-gray: #cfcfcf;
+$about-color: #1877b6;
+$news-color: #9e1d0a;
+$trends-color: #741784;
+$shows-color: #f08300;
+$denim-color: #2a3c8f;
+$companies-color: #51a8d0;
+$exclusive-color: #404040;
+
+/******************************
+COLORS
+******************************/
+// name
+$solitude: #edf2f3;
+$night-rider: #333333;
+$gainsboro: #dddddd;
+$nobel: #999999;
+$jungle-mist: #b5c0c0;
+$silver: #bdbdbd;
+$zumthor: #c5d0d2;
+$tiara: #c5d0d2;
+$iron: #d6dbdc;
+$shakespeare:#71b1d5;
+$gray: #777777;
+
+
+// use
+
+$site-bg: $solitude;
+$font-color-dark: $night-rider;
+$font-color-gray: $gray;
+$light-gray: $gainsboro;
+$gray-btn-color: $jungle-mist;
+$footer-socials-gray: $nobel;
+$menu-hover-border: $silver;
+$archive-header-bg: $zumthor;
+$aside-post-ov: $tiara;
+$pagination-active:$iron;
+$share-btn:$shakespeare;
+
+/******************************
+SIZE
+******************************/
+$site-max-width: 1440px;
+$sm: 768px; 	// 	Small devices
+$md: 992px; 	// 	medium devices
+$lg: 1200px;	// large devices
+
+/******************************
+ANIMATION
+******************************/
+$animation-time: 0.3s;
+$ease: ease-in-out;
+$transition-default: $animation-time $ease;

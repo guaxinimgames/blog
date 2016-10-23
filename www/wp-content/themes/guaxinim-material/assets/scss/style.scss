@@ -1,0 +1,52 @@
+/*********************
+COMPASS
+*********************/
+@import "compass"; // Compass
+@import "compass/reset"; // Compass reset
+
+/*********************
+THIRD PARTY
+*********************/
+@import "third-party/third-party"; // third party styles
+
+/*********************
+PARTIALS PARTY
+*********************/
+@import "partials/normalize"; // Normalize
+@import "partials/variables"; // Sass variables
+@import "partials/typography"; // typography
+@import "partials/functions"; // Sass functions
+@import "partials/mixins"; // import mixins
+
+/*********************
+MODULES
+*********************/
+@import "modules/alerts"; // Alert boxes
+@import "modules/buttons"; // Buttons
+@import "modules/forms"; // Forms (inputs & labels)
+@import "modules/facebook"; // Facebook resets
+
+/*********************
+BLOCKS
+*********************/
+@import "blocks/blocks";
+
+/*********************
+INCLUDES
+*********************/
+@import "includes/header/header";
+@import "includes/footer/footer";
+
+/*********************
+GENERAL STYLES
+*********************/
+
+/* base style */
+@import "breakpoints/base";
+
+/* Small Devices, Tablets */
+// @media only screen and (min-width: $sm) {@import "breakpoints/sm"}
+/* Medium Devices, Desktops */
+// @media only screen and (min-width: $md) {@import "breakpoints/md"}
+/* Large Devices, Wide Screens */
+// @media only screen and (min-width: $lg) {@import "breakpoints/lg"}

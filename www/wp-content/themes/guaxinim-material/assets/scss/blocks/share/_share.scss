@@ -1,0 +1,20 @@
+ul.share {
+	li {
+		display: inline-block;
+		// width: 100%;
+		button {
+			display: block;
+			width: 60px;
+			height: 60px;
+			border: 1px solid transparent;
+			background-color: $share-btn;
+			color:white;
+			@include transition(background-color $transition-default, color $transition-default, border-color $transition-default);
+			&:hover {
+				border-color: $share-btn;
+				color: $share-btn;
+				background-color: transparent;
+			}
+		}
+	}
+}

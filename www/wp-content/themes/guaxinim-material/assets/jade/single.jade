@@ -1,0 +1,16 @@
+extends archive
+block styles
+	link(rel="stylesheet", href!=css("pages/single/single.css"))
+prepend variables
+	:php
+		$fetured_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+		if(is_array($fetured_image)) {
+			$fetured_image = reset($fetured_image);
+		}
+block og-meta
+	meta(property="og:url", content!=echo('get_the_permalink()'))
+	meta(property="og:type", content="article")
+	meta(property="og:title", content!=echo('get_the_title()'))
+	meta(property="og:description", content!=echo('get_the_excerpt()'))
+	meta(property="og:image", content!=echo('$fetured_image'))
+block main

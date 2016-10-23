@@ -1,0 +1,83 @@
+include ./blocks/_blocks
+//- - $posts_class = ( isset($posts_class)? $posts_class : "col-md-6" );
+:php
+	$type = isset($types[$i])? $types[$i] : 'list';
+	$posts_class = "{$type} col-xs-12 ";
+	$post_image_container_class = "col-xs-12 ";
+	$post_text_container_class = "col-xs-12 ";
+	
+	switch($type) {
+		case 'medium':
+			$post_content_class .= "col-md-6";
+			$post_image_container_class .= "col-md-6";
+			$post_text_container_class .= "col-md-6";
+			break;
+		case 'little':
+			$posts_class .= "col-sm-6";
+			$post_image_container_class .= "col-lg-4";
+			$post_text_container_class .= "col-lg-8";
+			break;
+		case 'list':
+			$posts_class .= "col-sm-6 col-md-6 col-lg-4";
+			break;
+	}
+- if ( is_single() ):
+	//- If is single
+	article
+		:php
+			$posttype = get_post_type(get_the_ID());
+			$category = reset(wp_get_post_terms(get_the_ID(), "{$posttype}_categories"));
+		header.entry-header
+			h4.entry-category: a(href!=echo('get_term_link($category)'))!= $category->name
+			h1.entry-title!= get_the_title()
+			.entry-meta
+				.info.date
+					span.date!=get_the_date()
+					span &nbsp;
+					span.time!=get_the_time()
+				.info.author
+					span Por:
+					span &nbsp;
+					span!=get_the_author()
+		.row
+			.share-container.hidden-xs.hidden-sm.col-md-1
+				+share
+			.entry-content.col-md-10
+				:php
+					the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'odin' ) );
+					wp_link_pages( array(
+						'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'odin' ) . '</span>',
+						'after'       => '</div>',
+						'link_before' => '<span>',
+						'link_after'  => '</span>',
+					) );
+				.entry-comments
+					.fb-comments(data-href!=echo('get_the_permalink()'), data-numposts="5")
+		footer.entry-meta
+			
+- else:
+	//- if is archive
+	article.featured-post(id!="post-<?php echo the_ID() ?>", class!=echo('$posts_class'))
+		.content
+			.row
+				div(class!=echo('$post_image_container_class'))
+					a.block(href!=echo('esc_url(get_permalink())'), title!=echo('get_the_title()'))
+						:php
+							$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+							if(is_array($img)) {
+								$img = reset($img);
+							}
+						.image(style!=background('$img', true))
+				div(class!=echo('$post_text_container_class'))
+					.text-content
+						:php
+							$post_type = get_post_type_object(get_post_type($post->ID));
+							$cat = reset(get_the_terms($post, $post_type->name . '_categories'));
+						h4
+							a(href!=echo('get_term_link($cat->term_id)'))!= $cat->name
+						a(href!=echo('the_permalink()'))
+							h3.entry-title!= get_the_title()
+							- if($type == 'medium'):
+								p.entry-summary!= get_the_excerpt()
+							- endif
+- endif

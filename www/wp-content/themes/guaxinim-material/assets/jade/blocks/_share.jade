@@ -1,0 +1,9 @@
+mixin share
+	ul.share
+		- $socials = ['facebook', 'twitter','linkedin', 'instagram', 'pinterest'];
+		- $fa_icons = ['facebook', 'twitter','linkedin', 'instagram', 'pinterest-p'];
+		- foreach ($socials as $i=>$social):
+			li(class!=echo('$social'))
+				button(data-service!=echo('$social'))
+					i.fa(class!=echo('"fa-{$fa_icons[$i]}"'))
+		- endforeach

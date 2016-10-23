@@ -1,0 +1,21 @@
+.social-block {
+	text-align: center;
+	ul {
+		li {
+			display: inline-block;
+			margin-right: 22px;
+
+			&:last-child{
+				margin-right: 0;
+			}
+			
+			a{
+				color: $gray-btn-color;
+		    	font-size: 16px;
+				&:hover {
+					color: $light-gray;
+				}
+			}
+		}
+	}
+}

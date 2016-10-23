@@ -2,7 +2,7 @@ extends index
 block main
 	div#primary(class!="<?php echo odin_classes_page_sidebar(); ?>")
 		main#main-content.site-main(role="main")
-			- while ( have_posts() ) : the_post();				
+			- while ( have_posts() ) : the_post();
 				- get_template_part( 'content', get_post_format() );				
 				+author
 				- if ( comments_open() ) :
