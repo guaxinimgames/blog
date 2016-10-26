@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
 var jade = require('gulp-jade-php');
 var compass = require('compass');
 var plumber = require('gulp-plumber');
@@ -179,7 +178,6 @@ gulp.task('vendor-js', function() {
 		.pipe(rename('vendor.min.js'))
 		.pipe(gulp.dest(path.js.out + "libs/"))
 		.pipe(plumber.stop())
-		.pipe(browserSync.stream())
 });
 
 gulp.task('blocks-js', function(){
@@ -198,7 +196,6 @@ gulp.task('blocks-js', function(){
 	.pipe(rename('blocks.min.js'))
 	.pipe(gulp.dest(path.js.tmp))
 	.pipe(plumber.stop())
-	.pipe(browserSync.stream())
 });
 
 gulp.task('includes-js', function(){
@@ -217,7 +214,6 @@ gulp.task('includes-js', function(){
 	.pipe(rename('includes.min.js'))
 	.pipe(gulp.dest(path.js.tmp))
 	.pipe(plumber.stop())
-	.pipe(browserSync.stream())
 });
 
 gulp.task('clean-js', function () {
@@ -265,16 +261,10 @@ gulp.task('build', function() {
 });
 
 gulp.task('watch', ['build'], function() {
-	browserSync.init({
-		open: true,
-		proxy: false,
-		reloadDelay: 200
-	});
 	gulp.watch(path.jade.watch, ['jade']);
 	gulp.watch(path.compass.watch, ['compass']);
 	gulp.watch(path.coffee.watch, ['js']);
 	gulp.watch(path.js.watch, ['js']);
-	gulp.watch(path.images.watch, ['img']).on(['change'], browserSync.reload);
 });
 
 gulp.task('default', ['build']);

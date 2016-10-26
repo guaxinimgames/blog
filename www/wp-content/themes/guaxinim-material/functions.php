@@ -213,7 +213,7 @@ function get_time_ago() {
 	// Array of time period chunks
 	$chunks = array(
 		array( 60 * 60 * 24 * 365 , __( 'ano', 'themeblvd' ), __( 'anos', 'themeblvd' ) ),
-		array( 60 * 60 * 24 * 30 , __( 'mês', 'themeblvd' ), __( 'mêses', 'themeblvd' ) ),
+		array( 60 * 60 * 24 * 30 , __( 'mês', 'themeblvd' ), __( 'meses', 'themeblvd' ) ),
 		array( 60 * 60 * 24 * 7, __( 'semana', 'themeblvd' ), __( 'semanas', 'themeblvd' ) ),
 		array( 60 * 60 * 24 , __( 'dia', 'themeblvd' ), __( 'dias', 'themeblvd' ) ),
 		array( 60 * 60 , __( 'hora', 'themeblvd' ), __( 'horas', 'themeblvd' ) ),

@@ -23,6 +23,34 @@ if(is_array($fetured_image)) {
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid">
+          <div id="single" class="mdl-cell mdl-cell--12-col">
+            <div class="back-btn"><a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">arrow_back</i></a></div><?php while ( have_posts() ) : the_post(); ?><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+if(is_array($img)) {
+	$img = reset($img);
+} ?>
+            <article class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+              <header style="background-image:url('<?php echo $img?>')" class="mdl-card__media mdl-color-text--grey-50">
+                <div class="overlay-shadow"></div>
+                <div class="media-content"> 
+                  <div class="title">
+                    <h2 class="mdl-card__title-text"><?php echo get_the_title();; ?></h2>
+                  </div>
+                </div>
+              </header>
+              <div class="mdl-card__supporting-text meta"><a href="<?php echo get_author_posts_url(get_the_author_id()) ?>">
+                  <div class="meta-content">
+                    <div style="background-image:url('<?php echo get_avatar_url(get_the_author_id())?>')" class="avatar img-circle"></div>
+                    <div class="info"><strong><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></strong><span><?php echo get_time_ago(); ?></span></div>
+                  </div></a></div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-700">
+                <div class="content"><?php the_content() ?>
+                </div>
+              </div>
+              <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
+                <div class="fb-comments"></div>
+              </div>
+            </article><?php endwhile ?>
+          </div>
         </div>
         <div class="cf"></div>
       </main>

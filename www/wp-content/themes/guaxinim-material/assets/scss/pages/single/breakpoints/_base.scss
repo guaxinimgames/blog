@@ -1,0 +1,28 @@
+#single {
+	.back-btn {
+		position: absolute;
+		top: 16px;
+		left: 16px;
+	}
+	article {
+		margin-top: 100px;
+		.content {
+			padding: 0 24px;
+			max-width: 900px;
+			margin: 0 auto;
+			img {
+				margin: 20px auto;
+				display: block;
+				max-width: 100%;
+				height: auto;
+				.aligncenter {
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+		}
+		.comments {
+			background-color: $comments-bg;
+		}
+	}
+}

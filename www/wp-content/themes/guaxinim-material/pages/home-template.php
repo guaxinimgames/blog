@@ -20,28 +20,9 @@
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid">
-          <div class="mdl-cell mdl-cell--8-col">
-            <div class="mdl-card mdl-shadow--2dp"><a href="#">
-                <div class="mdl-card__media mdl-color-text--grey-50">
-                  <div class="title">
-                    <h2 class="mdl-card__title-text">Welcome</h2>
-                  </div>
-                </div></a>
-              <div class="mdl-card__supporting-text meta mdl-color-text--grey-600"><a href="#">
-                  <div class="meta-content">
-                    <div style="background-image:url('<?php echo get_template_directory_uri() . "/library/images/tests/avatar.jpg" ?>')" class="avatar img-circle"></div>
-                    <div class="info"><strong>Diego Lopes</strong><span>2 Dias atrás</span></div>
-                  </div></a></div>
-            </div>
-          </div>
-          <div class="mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop">
+          <div class="mdl-cell mdl-cell--12-col">
             <div class="gxn-card mdl-card mdl-shadow--2dp">
               <div class="mdl-card__media"></div>
-              <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-                <div class="meta-content">
-                  <div class="info"><strong>Bem vindo ao blog</strong></div>
-                </div>
-              </div>
             </div>
           </div><?php foreach(get_posts(array('post_type' => 'post', 'numberposts' => 10)) as $post): ?><?php setup_postdata($post) ?>
           <div class="mdl-cell">
@@ -57,11 +38,11 @@
                     </div>
                   </div>
                 </div></a>
-              <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-                <div class="meta-content"></div>
-                <div style="background-image:url('<?php echo get_avatar_url(get_the_author_id())?>')" class="avatar img-circle"></div>
-                <div class="info"><strong><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></strong><span><?php echo get_time_ago()	; ?></span></div>
-              </div>
+              <div class="mdl-card__supporting-text meta mdl-color-text--grey-600"><a href="<?php echo get_author_posts_url(get_the_author_id()) ?>">
+                  <div class="meta-content">
+                    <div style="background-image:url('<?php echo get_avatar_url(get_the_author_id())?>')" class="avatar img-circle"></div>
+                    <div class="info"><strong><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></strong><span><?php echo get_time_ago()	; ?></span></div>
+                  </div></a></div>
             </div>
           </div><?php wp_reset_postdata() ?><?php endforeach ?>
         </div>

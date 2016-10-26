@@ -14,3 +14,34 @@ block og-meta
 	meta(property="og:description", content!=echo('get_the_excerpt()'))
 	meta(property="og:image", content!=echo('$fetured_image'))
 block main
+	#single.mdl-cell.mdl-cell--12-col
+		.back-btn
+			a.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
+				i.material-icons arrow_back
+
+		- while ( have_posts() ) : the_post();
+			:php
+				$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+				if(is_array($img)) {
+					$img = reset($img);
+				}
+			article.mdl-card.mdl-shadow--4dp.mdl-cell.mdl-cell--12-col
+				header.mdl-card__media.mdl-color-text--grey-50(style!=background('$img',true))
+					.overlay-shadow
+					.media-content 
+						.title
+							h2.mdl-card__title-text!= get_the_title();
+				.mdl-card__supporting-text.meta
+					a(href!=echo('get_author_posts_url(get_the_author_id())'))
+						.meta-content
+							.avatar.img-circle(style!=background('get_avatar_url(get_the_author_id())', true))
+							.info
+								strong!= get_the_author_meta('display_name', get_the_author_id())
+								span!= get_time_ago()
+				.mdl-card__supporting-text.mdl-color-text--grey-700
+					.content
+						:php
+							the_content()
+				.mdl-color-text--primary-contrast.mdl-card__supporting-text.comments
+					.fb-comments
+		- endwhile

@@ -124,6 +124,7 @@ function bones_scripts_and_styles() {
 
   if (!is_admin()) {
 
+	  wp_register_style( 'material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), '', 'all' );
 		// register main stylesheet
 		wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
 
@@ -137,7 +138,7 @@ function bones_scripts_and_styles() {
 
   	// adding vendor scripts
 		wp_register_script( 'vendor-js', get_stylesheet_directory_uri() . '/library/js/libs/vendor.min.js', array('jquery'), '', true );
-		
+
 		wp_register_script( 'youtube-js', 'https://www.youtube.com/iframe_api', array('jquery'), '', true );
 
 		// adding general scripts
@@ -148,6 +149,7 @@ function bones_scripts_and_styles() {
 		wp_register_script('googlemaps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBQM6-OtgNDgFW3zYKoN1gKUqlK8gyrnEM', null, null, true);
 
 		// enqueue styles and scripts
+		wp_enqueue_style( 'material-icons' );
 		wp_enqueue_style( 'bones-stylesheet' );
 		wp_enqueue_style( 'bones-ie-only' );
 
@@ -313,7 +315,7 @@ function getInstagram($id, $token) {
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_TIMEOUT, 20);
 	$result = curl_exec($ch);
-	curl_close($ch); 
+	curl_close($ch);
 	return $result;
 }
 
