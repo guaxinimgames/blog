@@ -16,7 +16,12 @@ block og-meta
 block main
 	#single.mdl-cell.mdl-cell--12-col
 		.back-btn
-			a.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored
+			:php
+				$url = htmlspecialchars($_SERVER['HTTP_REFERER']);
+				if($url == "") {
+					$url = get_site_url();
+				}
+			a.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored(href!=echo('$url'))
 				i.material-icons arrow_back
 
 		- while ( have_posts() ) : the_post();

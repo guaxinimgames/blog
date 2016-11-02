@@ -1,5 +1,14 @@
 extends index
+prepend header
+	- //Template Name: Archives
 append styles
 	link(rel="stylesheet", href!=css("pages/archive/archive.css"))
 block main
+	.mdl-cell.mdl-cell--12-col
+		- if ( have_posts() ) : while ( have_posts() ) : the_post();
+			- setup_postdata($post)
+			.mdl-cell
+				+post-card
+			- wp_reset_postdata()
+		- endwhile;endif
 	

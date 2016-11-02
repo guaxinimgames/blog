@@ -19,12 +19,16 @@ if(is_array($fetured_image)) {
 <body <?php body_class(); ?>>
   <div id="fb-root"></div>
   <script>var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";</script>
-  <div class="main-container mdl-layout__container">
+  <div class="main-container mdl-layout__container"><?php //Template Name: Archives ?>
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid">
           <div id="single" class="mdl-cell mdl-cell--12-col">
-            <div class="back-btn"><a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">arrow_back</i></a></div><?php while ( have_posts() ) : the_post(); ?><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+            <div class="back-btn"><?php $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
+if($url == "") {
+	$url = get_site_url();
+} ?><a href="<?php echo $url ?>" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">arrow_back</i></a>
+            </div><?php while ( have_posts() ) : the_post(); ?><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 if(is_array($img)) {
 	$img = reset($img);
 } ?>

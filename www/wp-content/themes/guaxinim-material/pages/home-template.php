@@ -21,16 +21,16 @@
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
-            <div class="gxn-card mdl-card mdl-shadow--2dp">
-              <div class="mdl-card__media"></div>
-            </div>
-          </div><?php foreach(get_posts(array('post_type' => 'post', 'numberposts' => 10)) as $post): ?><?php setup_postdata($post) ?>
+            <div class="gxn-card mdl-card mdl-shadow--2dp"><a href="<?php echo get_site_url() ?>">
+                <div class="mdl-card__media"></div></a></div>
+          </div><?php $posts = get_posts(array('post_type' => 'post', 'numberposts' => -1)) ?><?php foreach( $posts as $post ): ?><?php setup_postdata($post) ?>
           <div class="mdl-cell">
-            <div class="mdl-card mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
-  if(is_array($img)) {
-    $img = reset($img);
-  } ?><a href="<?php echo get_the_permalink() ?>">
-                <div style="background-image:url('<?php echo $img?>')" class="mdl-card__media mdl-color-text--grey-50">
+            <div class="mdl-card hover mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+	if(is_array($img)) {
+		$img = reset($img);
+	} ?><a href="<?php echo get_the_permalink() ?>">
+                <div class="mdl-card__media mdl-color-text--grey-50">
+                  <div style="background-image:url('<?php echo $img?>')" class="background"></div>
                   <div class="overlay-shadow"></div>
                   <div class="media-content"> 
                     <div class="title">
@@ -45,6 +45,7 @@
                   </div></a></div>
             </div>
           </div><?php wp_reset_postdata() ?><?php endforeach ?>
+          <div class="mdl-cell mdl-cell--12-col text-center"><a href="<?php echo get_post_type_archive_link('post') ?>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</a></div>
         </div>
         <div class="cf"></div>
       </main>
