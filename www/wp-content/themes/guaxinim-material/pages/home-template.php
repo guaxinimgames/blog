@@ -19,11 +19,11 @@
   <div class="main-container mdl-layout__container"><?php //Template Name: Home ?>
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
-        <div class="main-grid mdl-grid">
-          <div class="mdl-cell mdl-cell--12-col">
+        <div class="main-grid mdl-grid"><?php $posts = get_posts(array('post_type' => 'post', 'numberposts' => 3)) ?>
+          <div data-total-posts="<?php echo wp_count_posts('post')->publish ?>" data-posts="<?php echo sizeof($posts) ?>" class="home-cell mdl-cell mdl-cell--12-col">
             <div class="gxn-card mdl-card mdl-shadow--2dp"><a href="<?php echo get_site_url() ?>">
                 <div class="mdl-card__media"></div></a></div>
-          </div><?php $posts = get_posts(array('post_type' => 'post', 'numberposts' => -1)) ?><?php foreach( $posts as $post ): ?><?php setup_postdata($post) ?>
+          </div><?php foreach( $posts as $post ): ?><?php setup_postdata($post) ?>
           <div class="mdl-cell">
             <div class="mdl-card hover mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 	if(is_array($img)) {
@@ -45,7 +45,9 @@
                   </div></a></div>
             </div>
           </div><?php wp_reset_postdata() ?><?php endforeach ?>
-          <div class="mdl-cell mdl-cell--12-col text-center"><a href="<?php echo get_post_type_archive_link('post') ?>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</a></div>
+          <div class="mdl-cell mdl-cell--12-col text-center">
+            <button class="load-more mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</button>
+          </div>
         </div>
         <div class="cf"></div>
       </main>

@@ -10,7 +10,7 @@ sidebars, comments, etc.
 
 // LOAD BONES CORE (if you remove this, the theme will break)
 require_once( 'library/bones.php' );
-
+require_once ( 'ajax/ajax.php' );
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
 
@@ -269,4 +269,26 @@ function get_time_ago() {
 
 // Filter our get_time_ago() function into WP's the_time() function
 add_filter('get_time_ago', 'get_time_ago');
-/* DON'T DELETE THIS CLOSING TAG */ ?>
+
+
+
+/*********************
+AJAX POSTS
+*********************/
+function ajax_posts() {
+	$index = $_POST['index'];
+	$total = $_POST['total'];
+	$posts = get_posts(
+		array(
+			'post_type' => 'post',
+			'numberposts' => 3,
+			'offset'=> $index
+		)
+	);
+	postcards($posts);
+	die();
+}
+add_action( 'wp_ajax_nopriv_ajax_posts', 'ajax_posts' );
+add_action( 'wp_ajax_ajax_posts', 'ajax_posts' );
+/* DON'T DELETE THIS CLOSING TAG */
+?>

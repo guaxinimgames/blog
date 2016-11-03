@@ -1,21 +1,22 @@
 mixin post-card(_class)
-	.mdl-card.hover.mdl-shadow--2dp(class=_class)
-		:php
-			$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
-				if(is_array($img)) {
-					$img = reset($img);
-				}
-		a(href!=echo('get_the_permalink()'))
-			.mdl-card__media.mdl-color-text--grey-50
-				.background(style!=background('$img',true))
-				.overlay-shadow
-				.media-content 
-					.title
-						h2.mdl-card__title-text!= get_the_title();
-		.mdl-card__supporting-text.meta.mdl-color-text--grey-600
-			a(href!=echo('get_author_posts_url(get_the_author_id())'))
-				.meta-content
-					.avatar.img-circle(style!=background('get_avatar_url(get_the_author_id())', true))
-					.info
-						strong!= get_the_author_meta('display_name', get_the_author_id())
-						span!= get_time_ago()	
+	.mdl-cell
+		.mdl-card.hover.mdl-shadow--2dp(class=_class)
+			:php
+				$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+					if(is_array($img)) {
+						$img = reset($img);
+					}
+			a(href!=echo('get_the_permalink()'))
+				.mdl-card__media.mdl-color-text--grey-50
+					.background(style!=background('$img',true))
+					.overlay-shadow
+					.media-content 
+						.title
+							h2.mdl-card__title-text!= get_the_title();
+			.mdl-card__supporting-text.meta.mdl-color-text--grey-600
+				a(href!=echo('get_author_posts_url(get_the_author_id())'))
+					.meta-content
+						.avatar.img-circle(style!=background('get_avatar_url(get_the_author_id())', true))
+						.info
+							strong!= get_the_author_meta('display_name', get_the_author_id())
+							span!= get_time_ago()	

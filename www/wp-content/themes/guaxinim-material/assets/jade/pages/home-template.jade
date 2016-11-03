@@ -4,17 +4,16 @@ prepend header
 append styles
 	link(rel="stylesheet", href!=css("pages/home/home.css"))
 block main
-	.mdl-cell.mdl-cell--12-col
+	- $posts = get_posts(array('post_type' => 'post', 'numberposts' => 3))
+	.home-cell.mdl-cell.mdl-cell--12-col(data-total-posts!=echo("wp_count_posts('post')->publish"), data-posts!=echo('sizeof($posts)'))
 		.gxn-card.mdl-card.mdl-shadow--2dp
 			a(href!=echo('get_site_url()'))
 				.mdl-card__media
-	- $posts = get_posts(array('post_type' => 'post', 'numberposts' => -1))
 	- foreach( $posts as $post ):
 		- setup_postdata($post)
-			.mdl-cell
-				+post-card
+		+post-card
 		- wp_reset_postdata()
 	- endforeach
 	//- Load More
 	.mdl-cell.mdl-cell--12-col.text-center
-		a.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent(href!=echo("get_post_type_archive_link('post')")) Mais Posts
+		button.load-more.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent Mais Posts
