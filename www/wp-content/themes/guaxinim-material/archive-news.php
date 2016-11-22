@@ -22,7 +22,7 @@
         <div class="main-grid mdl-grid">
           <div class="mdl-cell mdl-cell--12-col"><?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?><?php setup_postdata($post) ?>
             <div class="mdl-cell">
-              <div class="mdl-cell">
+              <div class="post-card mdl-cell">
                 <div class="mdl-card hover mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 	if(is_array($img)) {
 		$img = reset($img);

@@ -5,7 +5,11 @@ append styles
 	link(rel="stylesheet", href!=css("pages/home/home.css"))
 block main
 	- $posts = get_posts(array('post_type' => 'post', 'numberposts' => 3))
-	.home-cell.mdl-cell.mdl-cell--12-col(data-total-posts!=echo("wp_count_posts('post')->publish"), data-posts!=echo('sizeof($posts)'))
+	.posts-container
+	:php
+		$posts_total = wp_count_posts('post')->publish;
+		$posts_length = sizeof($posts);
+	#home.home-cell.mdl-cell.mdl-cell--12-col
 		.gxn-card.mdl-card.mdl-shadow--2dp
 			a(href!=echo('get_site_url()'))
 				.mdl-card__media
@@ -15,5 +19,7 @@ block main
 		- wp_reset_postdata()
 	- endforeach
 	//- Load More
-	.mdl-cell.mdl-cell--12-col.text-center
-		button.load-more.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent Mais Posts
+	- if ( $posts_length < $posts_total ):
+		.load-more-container.mdl-cell.mdl-cell--12-col.text-center
+			button(data-total-posts!=echo("$posts_total"), data-posts-length!=echo('$posts_length')).load-more.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent Mais Posts
+	- endif

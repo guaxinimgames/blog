@@ -20,11 +20,13 @@
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid"><?php $posts = get_posts(array('post_type' => 'post', 'numberposts' => 3)) ?>
-          <div data-total-posts="<?php echo wp_count_posts('post')->publish ?>" data-posts="<?php echo sizeof($posts) ?>" class="home-cell mdl-cell mdl-cell--12-col">
+          <div class="posts-container"></div><?php $posts_total = wp_count_posts('post')->publish;
+$posts_length = sizeof($posts); ?>
+          <div id="home" class="home-cell mdl-cell mdl-cell--12-col">
             <div class="gxn-card mdl-card mdl-shadow--2dp"><a href="<?php echo get_site_url() ?>">
                 <div class="mdl-card__media"></div></a></div>
           </div><?php foreach( $posts as $post ): ?><?php setup_postdata($post) ?>
-          <div class="mdl-cell">
+          <div class="post-card mdl-cell">
             <div class="mdl-card hover mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 	if(is_array($img)) {
 		$img = reset($img);
@@ -44,10 +46,10 @@
                     <div class="info"><strong><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></strong><span><?php echo get_time_ago()	; ?></span></div>
                   </div></a></div>
             </div>
-          </div><?php wp_reset_postdata() ?><?php endforeach ?>
-          <div class="mdl-cell mdl-cell--12-col text-center">
-            <button class="load-more mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</button>
-          </div>
+          </div><?php wp_reset_postdata() ?><?php endforeach ?><?php if ( $posts_length < $posts_total ): ?>
+          <div class="load-more-container mdl-cell mdl-cell--12-col text-center">
+            <button data-total-posts="<?php echo $posts_total ?>" data-posts-length="<?php echo $posts_length ?>" class="load-more mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</button>
+          </div><?php endif ?>
         </div>
         <div class="cf"></div>
       </main>

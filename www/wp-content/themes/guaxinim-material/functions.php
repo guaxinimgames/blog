@@ -276,12 +276,12 @@ add_filter('get_time_ago', 'get_time_ago');
 AJAX POSTS
 *********************/
 function ajax_posts() {
-	$index = $_POST['index'];
-	$total = $_POST['total'];
+	$index = isset($_POST['index'])? $_POST['index'] : 0;
+	$number = isset($_POST['number'])? $_POST['number'] : 3;
 	$posts = get_posts(
 		array(
 			'post_type' => 'post',
-			'numberposts' => 3,
+			'numberposts' => $number,
 			'offset'=> $index
 		)
 	);
