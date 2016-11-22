@@ -3,10 +3,10 @@
 	if $('.load-more').length > 0
 		$('.load-more').on 'click', (e) ->
 			e.preventDefault();
-			# make ajax call
 			$button = $(@);
 			index = parseInt ( $button.attr ( 'data-posts-length' ) );
 			total = parseInt $button.attr 'data-total-posts';
+			# make ajax call
 			$.ajax
 				url: ajax.ajaxurl
 				type: 'post'
