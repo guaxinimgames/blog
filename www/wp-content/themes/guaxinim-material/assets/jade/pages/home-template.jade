@@ -5,7 +5,7 @@ append styles
 	link(rel="stylesheet", href!=css("pages/home/home.css"))
 prepend main
 	:php
-		$posts = get_posts(array('post_type' => 'post', 'numberposts' => 3));
+		$posts = get_posts(array('post_type' => 'post', 'numberposts' => 6));
 		$posts_total = wp_count_posts('post')->publish;
 		$posts_length = sizeof($posts);
 block back

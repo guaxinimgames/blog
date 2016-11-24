@@ -277,7 +277,7 @@ AJAX POSTS
 *********************/
 function ajax_posts() {
 	$index = isset($_POST['index'])? $_POST['index'] : 0;
-	$number = isset($_POST['number'])? $_POST['number'] : 3;
+	$number = isset($_POST['number'])? $_POST['number'] : 6;
 	$posts = get_posts(
 		array(
 			'post_type' => 'post',
