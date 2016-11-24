@@ -1,0 +1,26 @@
+#author-card {
+	.avatar {
+		width: 150px;
+	    height: 150px;
+	    margin: 0 auto;
+	}
+	.info {
+		h1 {
+			margin-bottom: 0;
+		    line-height: 56px;
+		}
+		.twitter-link{
+			display: block;
+			margin: 12px 0 24px;
+		}
+		.bio {
+			font-size: 16px;
+		}
+		.social-block {
+			margin: 12px 0;
+			a {
+				font-size: 22px;
+			}
+		}
+	}
+}

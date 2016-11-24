@@ -15,15 +15,7 @@ block og-meta
 	meta(property="og:image", content!=echo('$fetured_image'))
 block main
 	#single.mdl-cell.mdl-cell--12-col
-		.back-btn
-			:php
-				$url = htmlspecialchars($_SERVER['HTTP_REFERER']);
-				if($url == "") {
-					$url = get_site_url();
-				}
-			a.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored(href!=echo('$url'))
-				i.material-icons arrow_back
-
+		+button_back
 		- while ( have_posts() ) : the_post();
 			:php
 				$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );

@@ -37,15 +37,17 @@
       <div class="mdl-mini-footer--left-section">
             <div class="social-block text-left">
               <ul><?php $icons = array (
-		'facebook' 	=> "facebook",
-		'twitter'		=>	"twitter",
-		'pinterest'	=>	"pinterest-p",
-		'youtube'		=>	"youtube-play",
-		'instagram'	=>	"instagram",
-		'linkedin'	=>	"linkedin"
+	'facebook' 	=> "facebook",
+	'twitter'	=>	"twitter",
+	'pinterest'	=>	"pinterest-p",
+	'youtube'	=>	"youtube-play",
+	'instagram'	=>	"instagram",
+	'linkedin'	=>	"linkedin"
 );
- ?><?php if(have_rows('socials', 'options')): while(have_rows('socials', 'options')): the_row() ?><?php $_name = get_sub_field('name'); ?><?php $_url = get_sub_field('url'); ?><?php $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
-                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endwhile;endif ?>
+$socials = isset($socials)? $socials : get_field('socials', 'options'); ?><?php foreach($socials as $social): ?><?php $_name = $social['name'];
+$_url = $social['url'];
+$_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
+                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endforeach ?><?php $socials = null; ?>
               </ul>
             </div>
       </div>

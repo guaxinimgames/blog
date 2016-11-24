@@ -14,7 +14,9 @@ main {
 IMAGES STYLES
 ***************************/
 .img-circle {
-  @include border-radius(100%);
+	background: center center no-repeat;
+	background-size: cover;
+	@include border-radius(100%);
 }
 
 /***************************

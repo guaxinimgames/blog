@@ -11,16 +11,17 @@
   <meta property="og:description" content="<?php echo bloginfo("description") ?>">
   <meta property="og:image" content="<?php echo get_template_directory_uri() ?>/library/images/share-image.jpg"><?php if(!get_option( 'site_icon' )): ?>
   <link href="<?php echo get_template_directory_uri(); ?>/library/images/favicon.ico" rel="shortcut icon"><?php endif ?><?php wp_head(); ?>
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/library/css/pages/archive/archive.css">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/library/css/pages/home/home.css">
 </head>
 <body <?php body_class(); ?>>
   <div id="fb-root"></div>
   <script>var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";</script>
-  <div class="main-container mdl-layout__container"><?php //Template Name: Home ?>
+  <div class="main-container mdl-layout__container"><?php //Template Name: Home ?><?php //Template Name: Archives ?>
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
-        <div class="main-grid mdl-grid"><?php $posts = get_posts(array('post_type' => 'post', 'numberposts' => 3)) ?>
-          <div class="posts-container"></div><?php $posts_total = wp_count_posts('post')->publish;
+        <div class="main-grid mdl-grid"><?php $posts = get_posts(array('post_type' => 'post', 'numberposts' => 3));
+$posts_total = wp_count_posts('post')->publish;
 $posts_length = sizeof($posts); ?>
           <div id="home" class="home-cell mdl-cell mdl-cell--12-col">
             <div class="gxn-card mdl-card mdl-shadow--2dp"><a href="<?php echo get_site_url() ?>">
@@ -58,15 +59,17 @@ $posts_length = sizeof($posts); ?>
       <div class="mdl-mini-footer--left-section">
             <div class="social-block text-left">
               <ul><?php $icons = array (
-		'facebook' 	=> "facebook",
-		'twitter'		=>	"twitter",
-		'pinterest'	=>	"pinterest-p",
-		'youtube'		=>	"youtube-play",
-		'instagram'	=>	"instagram",
-		'linkedin'	=>	"linkedin"
+	'facebook' 	=> "facebook",
+	'twitter'	=>	"twitter",
+	'pinterest'	=>	"pinterest-p",
+	'youtube'	=>	"youtube-play",
+	'instagram'	=>	"instagram",
+	'linkedin'	=>	"linkedin"
 );
- ?><?php if(have_rows('socials', 'options')): while(have_rows('socials', 'options')): the_row() ?><?php $_name = get_sub_field('name'); ?><?php $_url = get_sub_field('url'); ?><?php $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
-                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endwhile;endif ?>
+$socials = isset($socials)? $socials : get_field('socials', 'options'); ?><?php foreach($socials as $social): ?><?php $_name = $social['name'];
+$_url = $social['url'];
+$_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
+                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endforeach ?><?php $socials = null; ?>
               </ul>
             </div>
       </div>
