@@ -20,7 +20,7 @@
   <div class="main-container mdl-layout__container"><?php //Template Name: Home ?><?php //Template Name: Archives ?>
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
-        <div class="main-grid mdl-grid"><?php $posts = get_posts(array('post_type' => 'post', 'numberposts' => 6));
+        <div class="main-grid mdl-grid"><?php $posts = get_posts(array('post_type' => 'post', 'numberposts' => get_option( 'posts_per_page' )));
 $posts_total = wp_count_posts('post')->publish;
 $posts_length = sizeof($posts); ?>
           <div id="home" class="home-cell mdl-cell mdl-cell--12-col">
