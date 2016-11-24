@@ -1,0 +1,7 @@
+mixin load-more
+	- if (isset($posts_total) && isset($posts_length)):
+		- if ( $posts_length < $posts_total ):
+			.load-more-container.mdl-cell.mdl-cell--12-col.text-center
+				button(data-total-posts!=echo("$posts_total"), data-posts-length!=echo('$posts_length')).load-more.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent Mais Posts
+		- endif
+	- endif

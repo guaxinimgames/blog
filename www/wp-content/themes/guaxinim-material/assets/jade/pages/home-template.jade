@@ -14,14 +14,6 @@ block archive-header
 		.gxn-card.mdl-card.mdl-shadow--2dp
 			a(href!=echo('get_site_url()'))
 				.mdl-card__media
-block archive-content
-	- foreach( $posts as $post ):
-		- setup_postdata($post)
-		+post-card
-		- wp_reset_postdata()
-	- endforeach
+block archive-footer
 	//- Load More
-	- if ( $posts_length < $posts_total ):
-		.load-more-container.mdl-cell.mdl-cell--12-col.text-center
-			button(data-total-posts!=echo("$posts_total"), data-posts-length!=echo('$posts_length')).load-more.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent Mais Posts
-	- endif
+	+load-more

@@ -9,9 +9,10 @@ block main
 			+button_back
 	block archive-header
 	block archive-content
-		- if ( have_posts() ) : while ( have_posts() ) : the_post();
+		- foreach( $posts as $post ):
 			- setup_postdata($post)
 				+post-card
 			- wp_reset_postdata()
-		- endwhile;endif
+		- endforeach
+	block archive-footer
 	

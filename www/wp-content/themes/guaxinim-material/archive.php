@@ -26,7 +26,7 @@ if($url == "") {
 	$url = get_site_url();
 } ?><a href="<?php echo $url ?>" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">arrow_back</i></a>
             </div>
-          </div><?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?><?php setup_postdata($post) ?>
+          </div><?php foreach( $posts as $post ): ?><?php setup_postdata($post) ?>
           <div class="post-card mdl-cell">
             <div class="mdl-card hover mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 	if(is_array($img)) {
@@ -47,7 +47,7 @@ if($url == "") {
                     <div class="info"><strong><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></strong><span><?php echo get_time_ago()	; ?></span></div>
                   </div></a></div>
             </div>
-          </div><?php wp_reset_postdata() ?><?php endwhile;endif ?>
+          </div><?php wp_reset_postdata() ?><?php endforeach ?>
         </div>
         <div class="cf"></div>
       </main>

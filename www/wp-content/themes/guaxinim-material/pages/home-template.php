@@ -47,10 +47,10 @@ $posts_length = sizeof($posts); ?>
                     <div class="info"><strong><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></strong><span><?php echo get_time_ago()	; ?></span></div>
                   </div></a></div>
             </div>
-          </div><?php wp_reset_postdata() ?><?php endforeach ?><?php if ( $posts_length < $posts_total ): ?>
+          </div><?php wp_reset_postdata() ?><?php endforeach ?><?php if (isset($posts_total) && isset($posts_length)): ?><?php if ( $posts_length < $posts_total ): ?>
           <div class="load-more-container mdl-cell mdl-cell--12-col text-center">
             <button data-total-posts="<?php echo $posts_total ?>" data-posts-length="<?php echo $posts_length ?>" class="load-more mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</button>
-          </div><?php endif ?>
+          </div><?php endif ?><?php endif ?>
         </div>
         <div class="cf"></div>
       </main>
