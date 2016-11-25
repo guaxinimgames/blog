@@ -905,7 +905,7 @@ p {
   margin-bottom: 16px; }
 
 a {
-  color: rgb(255,64,129);
+  color: $dark-gray;
   font-weight: 500; }
 
 blockquote {
@@ -1551,10 +1551,10 @@ ul, ol {
   background-color: rgb(255,128,171) !important; }
 
 .mdl-color-text--pink-A200 {
-  color: rgb(255,64,129) !important; }
+  color: $dark-gray !important; }
 
 .mdl-color--pink-A200 {
-  background-color: rgb(255,64,129) !important; }
+  background-color: $dark-gray !important; }
 
 .mdl-color-text--pink-A400 {
   color: rgb(245,0,87) !important; }
@@ -3048,7 +3048,7 @@ ul, ol {
   background-color: rgb(48,63,159) !important; }
 
 .mdl-color--accent {
-  background-color: rgb(255,64,129) !important; }
+  background-color: $dark-gray !important; }
 
 .mdl-color--accent-contrast {
   background-color: rgb(255,255,255) !important; }
@@ -3063,7 +3063,7 @@ ul, ol {
   color: rgb(48,63,159) !important; }
 
 .mdl-color-text--accent {
-  color: rgb(255,64,129) !important; }
+  color: $dark-gray !important; }
 
 .mdl-color-text--accent-contrast {
   color: rgb(255,255,255) !important; }
@@ -3639,14 +3639,14 @@ ul, ol {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: rgb(255,64,129);
+    background: $dark-gray;
     color: rgb(255,255,255); }
     .mdl-button .mdl-badge[data-badge]:after {
       top: -10px;
       right: -5px; }
   .mdl-badge.mdl-badge--no-background[data-badge]:after {
-    color: rgb(255,64,129);
-    background: rgba(255,255,255,0.2);
+    color: $dark-gray;
+    background: rgba($white,0.2);
     box-shadow: 0 0 1px gray; }
   .mdl-badge.mdl-badge--overlap {
     margin-right: 10px; }
@@ -3938,14 +3938,14 @@ input.mdl-button[type="submit"] {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
     background-color: rgba(158,158,158, 0.40); }
   .mdl-button--fab.mdl-button--colored {
-    background: rgb(255,64,129);
+    background: $dark-gray;
     color: rgb(255,255,255); }
     .mdl-button--fab.mdl-button--colored:hover {
-      background-color: rgb(255,64,129); }
+      background-color: $dark-gray; }
     .mdl-button--fab.mdl-button--colored:focus:not(:active) {
-      background-color: rgb(255,64,129); }
+      background-color: $dark-gray; }
     .mdl-button--fab.mdl-button--colored:active {
-      background-color: rgb(255,64,129); }
+      background-color: $dark-gray; }
     .mdl-button--fab.mdl-button--colored .mdl-ripple {
       background: rgb(255,255,255); }
 
@@ -4002,12 +4002,12 @@ input.mdl-button[type="submit"] {
     background-color: rgb(63,81,181); }
 
 .mdl-button--accent.mdl-button--accent {
-  color: rgb(255,64,129); }
+  color: $dark-gray; }
   .mdl-button--accent.mdl-button--accent .mdl-ripple {
     background: rgb(255,255,255); }
   .mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent.mdl-button--fab {
     color: rgb(255,255,255);
-    background-color: rgb(255,64,129); }
+    background-color: $dark-gray; }
 
 .mdl-button[disabled][disabled], .mdl-button.mdl-button--disabled.mdl-button--disabled {
   color: rgba(0,0,0, 0.26);
@@ -4216,7 +4216,7 @@ input.mdl-button[type="submit"] {
   box-sizing: border-box; }
 
 .mdl-card__media {
-  background-color: rgb(255,64,129);
+  background-color: $dark-gray;
   background-repeat: repeat;
   background-position: 50% 50%;
   background-size: cover;
@@ -7868,7 +7868,7 @@ input.mdl-button[type="submit"] {
     bottom: 0;
     left: 0;
     position: absolute;
-    background: rgb(255,64,129);
+    background: $dark-gray;
     -webkit-animation: border-expand 0.2s cubic-bezier(0.4, 0, 0.4, 1) 0.01s alternate forwards;
             animation: border-expand 0.2s cubic-bezier(0.4, 0, 0.4, 1) 0.01s alternate forwards;
     transition: all 1s cubic-bezier(0.4, 0, 1, 1); }
@@ -8823,7 +8823,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   .mdl-snackbar__action {
     background: transparent;
     border: none;
-    color: rgb(255,64,129);
+    color: $dark-gray;
     float: right;
     text-transform: uppercase;
     padding: 14px 24px 14px 12px;

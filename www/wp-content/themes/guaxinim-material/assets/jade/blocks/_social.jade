@@ -17,7 +17,7 @@ mixin social(classes)
 					$_url = $social['url'];
 					$_icon = isset($icons[$_name])? $icons[$_name] : $_name;
 				li(class!=echo('$_name'))
-					a(href!=echo('$_url'), target="_blank")
+					a(href!=echo('$_url'), target="_blank", title!=echo('ucfirst($_name)'))
 						i.fa(class!=echo('"fa-{$_icon}"'))
 			- endforeach
 			- $socials = null;

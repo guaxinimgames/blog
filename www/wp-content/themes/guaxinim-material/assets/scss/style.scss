@@ -5,11 +5,6 @@ COMPASS
 @import "compass/reset"; // Compass reset
 
 /*********************
-THIRD PARTY
-*********************/
-@import "third-party/third-party"; // third party styles
-
-/*********************
 PARTIALS PARTY
 *********************/
 @import "partials/normalize"; // Normalize
@@ -17,6 +12,12 @@ PARTIALS PARTY
 @import "partials/typography"; // typography
 @import "partials/functions"; // Sass functions
 @import "partials/mixins"; // import mixins
+
+/*********************
+THIRD PARTY
+*********************/
+@import "third-party/third-party"; // third party styles
+
 
 /*********************
 MODULES

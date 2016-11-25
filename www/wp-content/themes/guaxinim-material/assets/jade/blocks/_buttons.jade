@@ -1,9 +1,4 @@
 mixin button_back
 	.back-btn
-		:php
-			$url = htmlspecialchars($_SERVER['HTTP_REFERER']);
-			if($url == "") {
-				$url = get_site_url();
-			}
-		a.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored(href!=echo('$url'))
-			i.material-icons arrow_back
+		a.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored(href!=echo('get_site_url()'), title="Ir para a Home")
+			i.material-icons home

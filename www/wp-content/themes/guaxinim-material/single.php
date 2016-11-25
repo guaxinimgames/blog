@@ -24,14 +24,11 @@ if(is_array($fetured_image)) {
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid">
           <div id="single" class="mdl-cell mdl-cell--12-col">
-            <div class="back-btn"><?php $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
-if($url == "") {
-	$url = get_site_url();
-} ?><a href="<?php echo $url ?>" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">arrow_back</i></a>
-            </div><?php while ( have_posts() ) : the_post(); ?><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+            <div class="back-btn"><a href="<?php echo get_site_url() ?>" title="Ir para a Home" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">home</i></a></div><?php while ( have_posts() ) : the_post(); ?><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 if(is_array($img)) {
 	$img = reset($img);
 } ?>
+            <div style="background-image:url('<?php echo $img?>')" class="bg-image"></div>
             <article class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
               <header style="background-image:url('<?php echo $img?>')" class="mdl-card__media mdl-color-text--grey-50">
                 <div class="overlay-shadow"></div>
@@ -73,7 +70,7 @@ if(is_array($img)) {
 $socials = isset($socials)? $socials : get_field('socials', 'options'); ?><?php foreach($socials as $social): ?><?php $_name = $social['name'];
 $_url = $social['url'];
 $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
-                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endforeach ?><?php $socials = null; ?>
+                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank" title="<?php echo ucfirst($_name) ?>"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endforeach ?><?php $socials = null; ?>
               </ul>
             </div>
       </div>

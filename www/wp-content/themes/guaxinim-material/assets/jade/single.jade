@@ -22,6 +22,7 @@ block main
 				if(is_array($img)) {
 					$img = reset($img);
 				}
+			.bg-image(style!=background('$img',true))
 			article.mdl-card.mdl-shadow--4dp.mdl-cell.mdl-cell--12-col
 				header.mdl-card__media.mdl-color-text--grey-50(style!=background('$img',true))
 					.overlay-shadow

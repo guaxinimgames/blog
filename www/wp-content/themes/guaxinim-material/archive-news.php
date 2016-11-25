@@ -21,11 +21,7 @@
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
-            <div class="back-btn"><?php $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
-if($url == "") {
-	$url = get_site_url();
-} ?><a href="<?php echo $url ?>" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">arrow_back</i></a>
-            </div>
+            <div class="back-btn"><a href="<?php echo get_site_url() ?>" title="Ir para a Home" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">home</i></a></div>
           </div><?php foreach( $posts as $post ): ?><?php setup_postdata($post) ?>
           <div class="post-card mdl-cell">
             <div class="mdl-card hover mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
@@ -66,7 +62,7 @@ if($url == "") {
 $socials = isset($socials)? $socials : get_field('socials', 'options'); ?><?php foreach($socials as $social): ?><?php $_name = $social['name'];
 $_url = $social['url'];
 $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
-                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endforeach ?><?php $socials = null; ?>
+                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank" title="<?php echo ucfirst($_name) ?>"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endforeach ?><?php $socials = null; ?>
               </ul>
             </div>
       </div>

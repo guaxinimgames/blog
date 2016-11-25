@@ -22,21 +22,18 @@
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid">
           <div class="mdl-cell mdl-cell--12-col">
-            <div class="back-btn"><?php $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
-if($url == "") {
-	$url = get_site_url();
-} ?><a href="<?php echo $url ?>" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">arrow_back</i></a>
-            </div>
+            <div class="back-btn"><a href="<?php echo get_site_url() ?>" title="Ir para a Home" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">home</i></a></div>
           </div>
           <div class="mdl-cell mdl-cell--12-col">
-            <div id="author-card" class="gxn-card mdl-card mdl-shadow--2dp"><a href="<?php echo get_author_posts_url(get_the_author_id()) ?>">
-                <div class="mdl-card__media">
-                  <div style="background-image:url('<?php echo get_avatar_url(get_the_author_id())?>')" class="avatar img-circle"></div>
-                  <div class="info">
-                    <h1 class="text-center text-white"><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></h1><?php $twitter = get_field('twitter', 'user_'. get_the_author_id()); ?><?php if($twitter): ?><a href="<?php echo "https://www.twitter.com/{$twitter}" ?>" title="twitter" target="_blank" class="twitter-link text-center text-white"><?php echo "@{$twitter}"; ?></a><?php endif ?><?php $socials = get_field('socials', "user_". get_the_author_id()); ?>
-                    <p class="bio text-center text-white"><?php echo get_the_author_meta('description', get_the_author_id()); ?></p>
-                    <div class="social-block">
-                      <ul><?php $icons = array (
+            <div id="author-card" class="gxn-card mdl-card mdl-shadow--2dp"><?php $author_color = get_field('color', 'user_'. get_the_author_id()); ?>
+              <div style="<?php echo "background-color:{$author_color}" ?>" class="mdl-card__media">
+                <div style="background-image:url('<?php echo get_avatar_url(get_the_author_id())?>')" class="avatar img-circle"></div>
+                <div class="info">
+                  <h1 class="text-center text-white"><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></h1><?php $twitter = get_field('twitter', 'user_'. get_the_author_id()); ?><?php if($twitter): ?>
+                  <div class="twitter-link text-center"><a href="<?php echo "https://www.twitter.com/{$twitter}" ?>" title="<?php echo "@{$twitter}" ?>" target="_blank" class="text-center text-white"><?php echo "@{$twitter}"; ?></a></div><?php endif ?><?php $socials = get_field('socials', "user_". get_the_author_id()); ?>
+                  <p class="bio text-center text-white"><?php echo get_the_author_meta('description', get_the_author_id()); ?></p>
+                  <div class="social-block">
+                    <ul><?php $icons = array (
 	'facebook' 	=> "facebook",
 	'twitter'	=>	"twitter",
 	'pinterest'	=>	"pinterest-p",
@@ -47,11 +44,12 @@ if($url == "") {
 $socials = isset($socials)? $socials : get_field('socials', 'options'); ?><?php foreach($socials as $social): ?><?php $_name = $social['name'];
 $_url = $social['url'];
 $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
-                        <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endforeach ?><?php $socials = null; ?>
-                      </ul>
-                    </div>
+                      <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank" title="<?php echo ucfirst($_name) ?>"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endforeach ?><?php $socials = null; ?>
+                    </ul>
                   </div>
-                </div></a></div>
+                </div>
+              </div>
+            </div>
           </div><?php foreach( $posts as $post ): ?><?php setup_postdata($post) ?>
           <div class="post-card mdl-cell">
             <div class="mdl-card hover mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
@@ -92,7 +90,7 @@ $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
 $socials = isset($socials)? $socials : get_field('socials', 'options'); ?><?php foreach($socials as $social): ?><?php $_name = $social['name'];
 $_url = $social['url'];
 $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
-                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endforeach ?><?php $socials = null; ?>
+                <li class="<?php echo $_name ?>"><a href="<?php echo $_url ?>" target="_blank" title="<?php echo ucfirst($_name) ?>"><i class="fa <?php echo "fa-{$_icon}" ?>"></i></a></li><?php endforeach ?><?php $socials = null; ?>
               </ul>
             </div>
       </div>

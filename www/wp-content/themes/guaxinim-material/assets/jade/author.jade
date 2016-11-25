@@ -4,16 +4,17 @@ append styles
 block archive-header
 	.mdl-cell.mdl-cell--12-col
 		#author-card.gxn-card.mdl-card.mdl-shadow--2dp
-			a(href!=echo('get_author_posts_url(get_the_author_id())'))
-				.mdl-card__media
-					.avatar.img-circle(style!=background('get_avatar_url(get_the_author_id())', true))
-					.info
-						h1.text-center.text-white!= get_the_author_meta('display_name', get_the_author_id())
-						- $twitter = get_field('twitter', 'user_'. get_the_author_id());
-						- if($twitter):
-							a.twitter-link.text-center.text-white(href!=echo('"https://www.twitter.com/{$twitter}"'), title="twitter", target="_blank")!= "@{$twitter}"
-						- endif
-						- $socials = get_field('socials', "user_". get_the_author_id());
-						//- - var_dump($socials)
-						p.bio.text-center.text-white!=get_the_author_meta('description', get_the_author_id())
-						+social
+			- $author_color = get_field('color', 'user_'. get_the_author_id());
+			.mdl-card__media(style!=echo('"background-color:{$author_color}"'))
+				.avatar.img-circle(style!=background('get_avatar_url(get_the_author_id())', true))
+				.info
+					h1.text-center.text-white!= get_the_author_meta('display_name', get_the_author_id())
+					- $twitter = get_field('twitter', 'user_'. get_the_author_id());
+					- if($twitter):
+						.twitter-link.text-center
+							a.text-center.text-white(href!=echo('"https://www.twitter.com/{$twitter}"'), title!=echo('"@{$twitter}"'), target="_blank")!= "@{$twitter}"
+					- endif
+					- $socials = get_field('socials', "user_". get_the_author_id());
+					//- - var_dump($socials)
+					p.bio.text-center.text-white!=get_the_author_meta('description', get_the_author_id())
+					+social
