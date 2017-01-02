@@ -1,5 +1,9 @@
 #author-card {
 	margin-top: 100px;
+	.mdl-card .mdl-card__media {
+		background: center center no-repeat;
+		background-size: cover;
+	}
 	.avatar {
 		width: 150px;
 	    height: 150px;

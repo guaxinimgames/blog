@@ -4,8 +4,15 @@ append styles
 block archive-header
 	.mdl-cell.mdl-cell--12-col
 		#author-card.gxn-card.mdl-card.mdl-shadow--2dp
-			- $author_color = get_field('color', 'user_'. get_the_author_id());
-			.mdl-card__media(style!=echo('"background-color:{$author_color}"'))
+			:php
+				if(get_field('is_image', 'user_'. get_the_author_id())) {
+					$author_bg = get_field('image', 'user_'. get_the_author_id()); 		
+					$bg_style = "background-image:url({$author_bg})";
+				} else {
+					$author_bg = get_field('color', 'user_'. get_the_author_id());
+					$bg_style = "background-color:{$author_bg}";
+				}
+			.mdl-card__media(style!=echo('$bg_style'))
 				.avatar.img-circle(style!=background('get_avatar_url(get_the_author_id())', true))
 				.info
 					h1.text-center.text-white!= get_the_author_meta('display_name', get_the_author_id())

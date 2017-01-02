@@ -25,8 +25,14 @@
             <div class="back-btn"><a href="<?php echo get_site_url() ?>" title="Ir para a Home" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">home</i></a></div>
           </div>
           <div class="mdl-cell mdl-cell--12-col">
-            <div id="author-card" class="gxn-card mdl-card mdl-shadow--2dp"><?php $author_color = get_field('color', 'user_'. get_the_author_id()); ?>
-              <div style="<?php echo "background-color:{$author_color}" ?>" class="mdl-card__media">
+            <div id="author-card" class="gxn-card mdl-card mdl-shadow--2dp"><?php if(get_field('is_image', 'user_'. get_the_author_id())) {
+	$author_bg = get_field('image', 'user_'. get_the_author_id()); 		
+	$bg_style = "background-image:url({$author_bg})";
+} else {
+	$author_bg = get_field('color', 'user_'. get_the_author_id());
+	$bg_style = "background-color:{$author_bg}";
+} ?>
+              <div style="<?php echo $bg_style ?>" class="mdl-card__media">
                 <div style="background-image:url('<?php echo get_avatar_url(get_the_author_id())?>')" class="avatar img-circle"></div>
                 <div class="info">
                   <h1 class="text-center text-white"><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></h1><?php $twitter = get_field('twitter', 'user_'. get_the_author_id()); ?><?php if($twitter): ?>
