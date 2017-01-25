@@ -1,14 +1,22 @@
 extends archive
 append styles
 	link(rel="stylesheet", href!=css("pages/author/author.css"))
+prepend main
+	:php
+		$posts_total = intval(count_user_posts(get_the_author_id(),'post'));
+		$posts_length = intval(sizeof($posts));
+		$author = get_the_author_id();
 block archive-header
 	.mdl-cell.mdl-cell--12-col
 		#author-card.gxn-card.mdl-card.mdl-shadow--2dp
 			:php
+				//- Get the author background
 				if(get_field('is_image', 'user_'. get_the_author_id())) {
+					//- format as image (if it's a image)
 					$author_bg = get_field('image', 'user_'. get_the_author_id()); 		
 					$bg_style = "background-image:url({$author_bg})";
 				} else {
+					//- format as color (if it's a color)
 					$author_bg = get_field('color', 'user_'. get_the_author_id());
 					$bg_style = "background-color:{$author_bg}";
 				}
@@ -22,6 +30,7 @@ block archive-header
 							a.text-center.text-white(href!=echo('"https://www.twitter.com/{$twitter}"'), title!=echo('"@{$twitter}"'), target="_blank")!= "@{$twitter}"
 					- endif
 					- $socials = get_field('socials', "user_". get_the_author_id());
-					//- - var_dump($socials)
 					p.bio.text-center.text-white!=get_the_author_meta('description', get_the_author_id())
 					+social
+block archive-footer
+	+load-more

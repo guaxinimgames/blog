@@ -2,15 +2,16 @@
 	$('.load-more').on 'click', (e) ->
 		e.preventDefault();
 		$button = $(@);
-		index = parseInt ( $button.attr ( 'data-posts-length' ) );
-		total = parseInt $button.attr 'data-total-posts';
+		index = $button.attr 'data-posts-length';
+		author = $button.attr 'data-posts-author';
 		# make ajax call
 		$.ajax
 			url: ajax.ajaxurl
 			type: 'post'
 			data:
 				'action': 'ajax_posts'
-				'index': index
+				'index': parseInt index
+				'author': parseInt(author) if parseInt(author) >= 0
 			beforeSend: ->
 				$button.addClass 'loading'
 				.attr 'disabled', 'disabled'
@@ -21,7 +22,7 @@
 				.removeClass 'loading'
 				.removeAttr 'disabled'
 				# remove the button if all posts are loaded
-				$button.remove() if $button.attr('data-posts-length') >= $button.attr('data-total-posts')
+				$button.remove() if $button.attr('data-posts-length') >= $button.attr('data-posts-total')
 				componentHandler.upgradeDom(); # Handke the material componentHandler
 			always: ->
 				$button.removeClass 'loading'

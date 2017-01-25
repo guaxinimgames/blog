@@ -278,11 +278,14 @@ AJAX POSTS
 function ajax_posts() {
 	$index = isset($_POST['index'])? $_POST['index'] : 0;
 	$number = isset($_POST['number'])? $_POST['number'] : get_option( 'posts_per_page' );
+	$author = isset($_POST['author'])? $_POST['author'] : NULL;
+	
 	$posts = get_posts(
 		array(
 			'post_type' => 'post',
 			'numberposts' => $number,
-			'offset'=> $index
+			'offset'=> $index,
+			'author' => $author
 		)
 	);
 	postcards($posts);

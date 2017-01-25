@@ -21,8 +21,8 @@
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid"><?php $posts = get_posts(array('post_type' => 'post', 'numberposts' => get_option( 'posts_per_page' )));
-$posts_total = wp_count_posts('post')->publish;
-$posts_length = sizeof($posts); ?>
+$posts_total = intval(wp_count_posts('post')->publish);
+$posts_length = intval(sizeof($posts)); ?>
           <div id="home" class="home-cell mdl-cell mdl-cell--12-col">
             <div class="gxn-card mdl-card mdl-shadow--2dp"><a href="<?php echo get_site_url() ?>">
                 <div class="mdl-card__media"></div></a></div>
@@ -48,8 +48,8 @@ $posts_length = sizeof($posts); ?>
                   </div></a></div>
             </div>
           </div><?php wp_reset_postdata() ?><?php endforeach ?><?php if (isset($posts_total) && isset($posts_length)): ?><?php if ( $posts_length < $posts_total ): ?>
-          <div class="load-more-container mdl-cell mdl-cell--12-col text-center">
-            <button data-total-posts="<?php echo $posts_total ?>" data-posts-length="<?php echo $posts_length ?>" class="load-more mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</button>
+          <div class="load-more-container mdl-cell mdl-cell--12-col text-center"><?php $author = isset($author)? $author : NULL;  ?>
+            <button data-posts-total="<?php echo $posts_total ?>" data-posts-length="<?php echo $posts_length ?>" data-posts-author="<?php echo $author ?>" class="load-more mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</button>
           </div><?php endif ?><?php endif ?>
         </div>
         <div class="cf"></div>

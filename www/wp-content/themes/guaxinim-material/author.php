@@ -20,15 +20,20 @@
   <div class="main-container mdl-layout__container"><?php //Template Name: Archives ?>
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
-        <div class="main-grid mdl-grid">
+        <div class="main-grid mdl-grid"><?php $posts_total = intval(count_user_posts(get_the_author_id(),'post'));
+$posts_length = intval(sizeof($posts));
+$author = get_the_author_id(); ?>
           <div class="mdl-cell mdl-cell--12-col">
             <div class="back-btn"><a href="<?php echo get_site_url() ?>" title="Ir para a Home" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">home</i></a></div>
           </div>
           <div class="mdl-cell mdl-cell--12-col">
-            <div id="author-card" class="gxn-card mdl-card mdl-shadow--2dp"><?php if(get_field('is_image', 'user_'. get_the_author_id())) {
+            <div id="author-card" class="gxn-card mdl-card mdl-shadow--2dp"><?php //- Get the author background
+if(get_field('is_image', 'user_'. get_the_author_id())) {
+	//- format as image (if it's a image)
 	$author_bg = get_field('image', 'user_'. get_the_author_id()); 		
 	$bg_style = "background-image:url({$author_bg})";
 } else {
+	//- format as color (if it's a color)
 	$author_bg = get_field('color', 'user_'. get_the_author_id());
 	$bg_style = "background-color:{$author_bg}";
 } ?>
@@ -77,7 +82,10 @@ $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
                     <div class="info"><strong><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></strong><span><?php echo get_time_ago()	; ?></span></div>
                   </div></a></div>
             </div>
-          </div><?php wp_reset_postdata() ?><?php endforeach ?>
+          </div><?php wp_reset_postdata() ?><?php endforeach ?><?php if (isset($posts_total) && isset($posts_length)): ?><?php if ( $posts_length < $posts_total ): ?>
+          <div class="load-more-container mdl-cell mdl-cell--12-col text-center"><?php $author = isset($author)? $author : NULL;  ?>
+            <button data-posts-total="<?php echo $posts_total ?>" data-posts-length="<?php echo $posts_length ?>" data-posts-author="<?php echo $author ?>" class="load-more mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</button>
+          </div><?php endif ?><?php endif ?>
         </div>
         <div class="cf"></div>
       </main>

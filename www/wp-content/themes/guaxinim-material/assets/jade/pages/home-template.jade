@@ -6,8 +6,8 @@ append styles
 prepend main
 	:php
 		$posts = get_posts(array('post_type' => 'post', 'numberposts' => get_option( 'posts_per_page' )));
-		$posts_total = wp_count_posts('post')->publish;
-		$posts_length = sizeof($posts);
+		$posts_total = intval(wp_count_posts('post')->publish);
+		$posts_length = intval(sizeof($posts));
 block back
 block archive-header
 	#home.home-cell.mdl-cell.mdl-cell--12-col
@@ -15,5 +15,4 @@ block archive-header
 			a(href!=echo('get_site_url()'))
 				.mdl-card__media
 block archive-footer
-	//- Load More
 	+load-more
