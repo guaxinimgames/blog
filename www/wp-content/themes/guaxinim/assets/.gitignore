@@ -1,6 +1,0 @@
-js/**/*.min.js
-!js/libs/*.min.js
-
-
-css/
-css/**/*.css
