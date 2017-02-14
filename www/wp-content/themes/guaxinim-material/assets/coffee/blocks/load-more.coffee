@@ -7,7 +7,7 @@
 		# make ajax call
 		$.ajax
 			url: ajax.ajaxurl
-			type: 'post'
+			type: 'get'
 			data:
 				'action': 'ajax_posts'
 				'index': parseInt index
