@@ -105,7 +105,7 @@ function bones_custom_image_sizes( $sizes ) {
 
 
 /************************************
-GUIA JEANS FUNCTIONS
+GUAXINIM FUNCTIONS
 ************************************/
 function sendEmail() {
 	$name       = isset($_POST['name']) ? $_POST['name'] : null;

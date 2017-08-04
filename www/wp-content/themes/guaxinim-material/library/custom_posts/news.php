@@ -37,7 +37,7 @@ function news() {
 	);
 	$args = array(
 		'label'                 => __( 'Notícias', 'text_domain' ),
-		'description'           => __( 'Notícias Guia Jeans', 'text_domain' ),
+		'description'           => __( 'Notícias', 'text_domain' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor'),
 		'taxonomies'            => array( 'news_categories' ),
