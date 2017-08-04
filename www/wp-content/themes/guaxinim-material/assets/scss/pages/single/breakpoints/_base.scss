@@ -1,6 +1,6 @@
 #single {
 	.bg-image {
-		background: center center no-repeat;
+		background: $black center center no-repeat;
 		background-size: cover;
 		position: fixed;
 		width: 100%;
@@ -8,6 +8,7 @@
 		top: 0;
 		left: 0;
 		z-index: -1;
+		@include filter(blur(5px));
 		&:after {
 			content: '';
 			position: absolute;

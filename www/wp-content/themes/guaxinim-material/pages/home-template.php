@@ -17,7 +17,21 @@
 <body <?php body_class(); ?>>
   <div id="fb-root"></div>
   <script>var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";</script>
-  <div class="main-container mdl-layout__container"><?php //Template Name: Home ?><?php //Template Name: Archives ?>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"><?php //Template Name: Home ?><?php //Template Name: Archives ?><?php wp_reset_postdata();
+wp_reset_query(); ?>
+    <header id="header" class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button"><i class="material-icons"></i></div>
+        <!-- Title--><span class="mdl-layout-title">Title</span>
+        <!-- Add spacer, to align navigation to the right-->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens.-->
+        <nav class="mdl-navigation mdl-layout--large-screen-only"><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a></nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer"><span class="mdl-layout-title">Title</span>
+      <nav class="mdl-navigation"><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a></nav>
+    </div>
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid"><?php $posts = get_posts(array('post_type' => 'post', 'numberposts' => get_option( 'posts_per_page' )));
@@ -27,30 +41,30 @@ $posts_length = intval(sizeof($posts)); ?>
             <div class="gxn-card mdl-card mdl-shadow--2dp"><a href="<?php echo get_site_url() ?>">
                 <div class="mdl-card__media"></div></a></div>
           </div><?php foreach( $posts as $post ): ?><?php setup_postdata($post) ?>
-          <div class="post-card mdl-cell">
-            <div class="mdl-card hover mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+              <div class="post-card mdl-cell">
+                <div class="mdl-card hover mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 	if(is_array($img)) {
 		$img = reset($img);
 	} ?><a href="<?php echo get_the_permalink() ?>">
-                <div class="mdl-card__media mdl-color-text--grey-50">
-                  <div style="background-image:url('<?php echo $img?>')" class="background"></div>
-                  <div class="overlay-shadow"></div>
-                  <div class="media-content"> 
-                    <div class="title">
-                      <h2 class="mdl-card__title-text"><?php echo get_the_title();; ?></h2>
-                    </div>
-                  </div>
-                </div></a>
-              <div class="mdl-card__supporting-text meta mdl-color-text--grey-600"><a href="<?php echo get_author_posts_url(get_the_author_id()) ?>">
-                  <div class="meta-content">
-                    <div style="background-image:url('<?php echo get_avatar_url(get_the_author_id())?>')" class="avatar img-circle"></div>
-                    <div class="info"><strong><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></strong><span><?php echo get_time_ago()	; ?></span></div>
-                  </div></a></div>
-            </div>
-          </div><?php wp_reset_postdata() ?><?php endforeach ?><?php if (isset($posts_total) && isset($posts_length)): ?><?php if ( $posts_length < $posts_total ): ?>
-          <div class="load-more-container mdl-cell mdl-cell--12-col text-center"><?php $author = isset($author)? $author : NULL;  ?>
-            <button data-posts-total="<?php echo $posts_total ?>" data-posts-length="<?php echo $posts_length ?>" data-posts-author="<?php echo $author ?>" class="load-more mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</button>
-          </div><?php endif ?><?php endif ?>
+                    <div class="mdl-card__media mdl-color-text--grey-50">
+                      <div style="background-image:url('<?php echo $img?>')" class="background"></div>
+                      <div class="overlay-shadow"></div>
+                      <div class="media-content"> 
+                        <div class="title">
+                          <h2 class="mdl-card__title-text"><?php echo get_the_title();; ?></h2>
+                        </div>
+                      </div>
+                    </div></a>
+                  <div class="mdl-card__supporting-text meta mdl-color-text--grey-600"><a href="<?php echo get_author_posts_url(get_the_author_id()) ?>">
+                      <div class="meta-content">
+                        <div style="background-image:url('<?php echo get_avatar_url(get_the_author_id())?>')" class="avatar img-circle"></div>
+                        <div class="info"><strong><?php echo get_the_author_meta('display_name', get_the_author_id()); ?></strong><span><?php echo get_time_ago()	; ?></span></div>
+                      </div></a></div>
+                </div>
+              </div><?php wp_reset_postdata() ?><?php endforeach ?><?php if (isset($posts_total) && isset($posts_length)): ?><?php if ( $posts_length < $posts_total ): ?>
+              <div class="load-more-container mdl-cell mdl-cell--12-col text-center"><?php $author = isset($author)? $author : NULL;  ?>
+                <button data-posts-total="<?php echo $posts_total ?>" data-posts-length="<?php echo $posts_length ?>" data-posts-author="<?php echo $author ?>" class="load-more mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Mais Posts</button>
+              </div><?php endif ?><?php endif ?>
         </div>
         <div class="cf"></div>
       </main>
@@ -76,7 +90,7 @@ $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
       <div class="mdl-mini-footer--right-section">
         <div id="copyright">
           <div class="wrapper-footer col-xs-12 col-sm-10 col-md-10">
-            <p>&copy; Copyright 2005-<?php echo date('Y'); ?> <?php echo bloginfo('name') ?>. Todos os direitos reservados.</p><a href="http://www.tinpix.com" title="Tinpix Digital" target="_blank" id="tinpix-logo"></a>
+            <p>&copy; Copyright 2005-<?php echo date('Y'); ?> <?php echo bloginfo('name') ?>. Todos os direitos reservados.</p>
             <div class="clear"></div>
           </div>
           <div class="clear"></div>

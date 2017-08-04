@@ -15,7 +15,21 @@
 <body <?php body_class(); ?>>
   <div id="fb-root"></div>
   <script>var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";</script>
-  <div class="main-container mdl-layout__container">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header"><?php wp_reset_postdata();
+wp_reset_query(); ?>
+    <header id="header" class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button"><i class="material-icons"></i></div>
+        <!-- Title--><span class="mdl-layout-title">Title</span>
+        <!-- Add spacer, to align navigation to the right-->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens.-->
+        <nav class="mdl-navigation mdl-layout--large-screen-only"><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a></nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer"><span class="mdl-layout-title">Title</span>
+      <nav class="mdl-navigation"><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a></nav>
+    </div>
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid"><?php while ( have_posts() ) : the_post(); ?><?php get_template_part( 'content', 'page' ); ?><?php if ( comments_open() || get_comments_number() ) : ?><?php comments_template(); ?><?php endif ?><?php endwhile ?>
@@ -44,7 +58,7 @@ $_icon = isset($icons[$_name])? $icons[$_name] : $_name; ?>
       <div class="mdl-mini-footer--right-section">
         <div id="copyright">
           <div class="wrapper-footer col-xs-12 col-sm-10 col-md-10">
-            <p>&copy; Copyright 2005-<?php echo date('Y'); ?> <?php echo bloginfo('name') ?>. Todos os direitos reservados.</p><a href="http://www.tinpix.com" title="Tinpix Digital" target="_blank" id="tinpix-logo"></a>
+            <p>&copy; Copyright 2005-<?php echo date('Y'); ?> <?php echo bloginfo('name') ?>. Todos os direitos reservados.</p>
             <div class="clear"></div>
           </div>
           <div class="clear"></div>

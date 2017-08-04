@@ -1,14 +1,3 @@
-/*
- * Validate Plugin for JQuery 
- * Copyright (c) 2012 Tinpix Digital Ltda
- *  
- * Version	: 1.0
- * Date		: 2012-05-29	
- * Author:	: Tinpix Digital
- * Web site	: www.tinpix.com.br
- *
- */
-
 (function($)
 {
 	$.fn.validate = function(showAlert)

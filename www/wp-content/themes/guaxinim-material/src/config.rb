@@ -1,4 +1,3 @@
-http_path = '/guia-jeans/www/'
 css_dir = '../library/css/'
 sass_dir = '../assets/scss/'
 images_dir = '../library/images/'

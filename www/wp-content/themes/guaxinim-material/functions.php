@@ -113,13 +113,13 @@ function sendEmail() {
 	$subject    = isset($_POST['subject']) ? $_POST['subject'] : 'Contato enviado pelo site';
 	$message    = isset($_POST['message']) ? $_POST['message'] : null;
 	$file       = isset($_FILES["attachment"]) ? $_FILES["attachment"] : null;
-	$sendTo     = 'richard@tinpix.com.br';
-	$mailSubject    = '[CONTATO SITE TINPIX] '.$subject;
+	$sendTo     = 'contato@guaxinimgames.com';
+	$mailSubject    = '[CONTATO SITE] '.$subject;
 
 
 	/* Medida preventiva para evitar que outros domínios sejam remetente da sua mensagem. */
 	if (eregi('tempsite.ws$|locaweb.com.br$|hospedagemdesites.ws$|websiteseguro.com$', $_SERVER[HTTP_HOST])) {
-					$emailsender='noreply@tinpix.com.br'; // Substitua essa linha pelo seu e-mail@seudominio
+					$emailsender='noreply@guaxinimgames.com'; // Substitua essa linha pelo seu e-mail@seudominio
 	} else {
 					$emailsender = "noreply@" . $_SERVER[HTTP_HOST];
 					//    Na linha acima estamos forçando que o remetente seja 'webmaster@seudominio',

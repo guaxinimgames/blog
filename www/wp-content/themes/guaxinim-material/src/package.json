@@ -1,12 +1,12 @@
 {
-  "name": "guia-jeans",
+  "name": "guaxinim-blog",
   "version": "1.0.0",
-  "description": "Guia Jeanswear",
+  "description": "Blog Guaxinim",
   "main": "gulpfile.js",
   "scripts": {
     "test": ""
   },
-  "author": "Tinpix",
+  "author": "Guaxinim Games",
   "license": "ISC",
   "devDependencies": {
     "coffee-gulp": "0.0.2",

@@ -32,9 +32,9 @@ body("<?php body_class(); ?>")
 		#fb-root
 		script.
 			var FB_APP_ID = "<?php echo get_field('fb_app_id','options') ?>";
-	.main-container.mdl-layout__container
+	.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
 			block header
-				//- include ./includes/_header.jade
+				include ./includes/_header.jade
 			block wrapper
 				div#wrapper
 					main#main.mdl-layout__content(tabindex="-1", role="main")
