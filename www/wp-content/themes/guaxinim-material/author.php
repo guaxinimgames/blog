@@ -22,24 +22,24 @@ wp_reset_query(); ?>
     <header id="header" class="mdl-layout__header">
       <div class="mdl-layout__header-row">
         <div aria-expanded="false" role="button" tabindex="0" class="mdl-layout__drawer-button"><i class="material-icons"></i></div>
-        <!-- Title--><span class="mdl-layout-title">Title</span>
+        <!-- Title--><span class="mdl-layout-title"></span><a href="<?php echo home_url() ?>" class="mdl-navigation__link"><img src="<?php echo get_template_directory_uri() ?>/library/images/main/logo-horizontal.svg" alt=""></a>
         <!-- Add spacer, to align navigation to the right-->
         <div class="mdl-layout-spacer"></div>
         <!-- Navigation. We hide it in small screens.-->
-        <nav class="mdl-navigation mdl-layout--large-screen-only"><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a></nav>
+        <nav class="mdl-navigation mdl-layout--large-screen-only"><?php foreach(wp_get_nav_menu_items('Main Menu') as $item): ?><a href="<?php echo $item->url ?>" title="<?php echo $item->title ?>" class="mdl-navigation__link"><?php echo $item->title; ?></a><?php endforeach ?>
+        </nav>
       </div>
     </header>
-    <div class="mdl-layout__drawer"><span class="mdl-layout-title">Title</span>
-      <nav class="mdl-navigation"><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a><a href="" class="mdl-navigation__link">Link</a></nav>
+    <div class="mdl-layout__drawer"><span class="mdl-layout-title"><a href="<?php echo home_url() ?>" class="mdl-navigation__link"><img src="<?php echo get_template_directory_uri() ?>/library/images/main/logo-horizontal-black.svg" alt=""></a></span>
+      <nav class="mdl-navigation"><?php foreach(wp_get_nav_menu_items('Main Menu') as $item): ?><a href="<?php echo $item->url ?>" title="<?php echo $item->title ?>" class="mdl-navigation__link"><?php echo $item->title; ?></a><?php endforeach ?>
+      </nav>
     </div>
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
         <div class="main-grid mdl-grid"><?php $posts_total = intval(count_user_posts(get_the_author_id(),'post'));
 $posts_length = intval(sizeof($posts));
 $author = get_the_author_id(); ?>
-          <div class="mdl-cell mdl-cell--12-col">
-                <div class="back-btn"><a href="<?php echo get_site_url() ?>" title="Ir para a Home" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">home</i></a></div>
-          </div>
+          <div class="mdl-cell mdl-cell--12-col"></div>
           <div class="mdl-cell mdl-cell--12-col">
             <div id="author-card" class="gxn-card mdl-card mdl-shadow--2dp"><?php //- Get the author background
 if(get_field('is_image', 'user_'. get_the_author_id())) {

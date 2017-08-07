@@ -15,14 +15,14 @@ block og-meta
 	meta(property="og:image", content!=echo('$fetured_image'))
 block main
 	#single.mdl-cell.mdl-cell--12-col
-		+button_back
 		- while ( have_posts() ) : the_post();
 			:php
 				$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 				if(is_array($img)) {
 					$img = reset($img);
 				}
-			.bg-image(style!=background('$img',true))
+			.bg-outline
+				.bg-image(style!=background('$img',true))
 			article.mdl-card.mdl-shadow--4dp.mdl-cell.mdl-cell--12-col
 				header.mdl-card__media.mdl-color-text--grey-50(style!=background('$img',true))
 					.overlay-shadow

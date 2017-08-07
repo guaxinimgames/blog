@@ -8,20 +8,15 @@ header#header.mdl-layout__header
 			i.material-icons 
 
 		// Title
-		span.mdl-layout-title Title
+		span.mdl-layout-title
+		a.mdl-navigation__link(href!=echo("home_url()", title!=echo("bloginfo('name')")))
+			img(src!=image("main/logo-horizontal.svg"), alt="")
 		// Add spacer, to align navigation to the right
 		.mdl-layout-spacer
 		// Navigation. We hide it in small screens.
 		nav.mdl-navigation.mdl-layout--large-screen-only
-			a.mdl-navigation__link(href='') Link
-			a.mdl-navigation__link(href='') Link
-			a.mdl-navigation__link(href='') Link
-			a.mdl-navigation__link(href='') Link
-.mdl-layout__drawer
-	span.mdl-layout-title Title
-	nav.mdl-navigation
-		a.mdl-navigation__link(href='') Link
-		a.mdl-navigation__link(href='') Link
-		a.mdl-navigation__link(href='') Link
-		a.mdl-navigation__link(href='') Link
-
+			- foreach(wp_get_nav_menu_items('Main Menu') as $item):
+				a.mdl-navigation__link(href!=echo("$item->url"), title!=echo("$item->title"))!= $item->title
+			- endforeach
+block drawer-menu
+	include _drawer-menu

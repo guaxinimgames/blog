@@ -1,0 +1,8 @@
+.mdl-layout__drawer
+	span.mdl-layout-title
+		a.mdl-navigation__link(href!=echo("home_url()", title!=echo("bloginfo('name')")))
+			img(src!=image("main/logo-horizontal-black.svg"), alt="")
+	nav.mdl-navigation
+		- foreach(wp_get_nav_menu_items('Main Menu') as $item):
+			a.mdl-navigation__link(href!=echo("$item->url"), title!=echo("$item->title"))!= $item->title
+		- endforeach
