@@ -8,7 +8,6 @@ prepend main
 		$posts = get_posts(array('post_type' => 'post', 'numberposts' => get_option( 'posts_per_page' )));
 		$posts_total = intval(wp_count_posts('post')->publish);
 		$posts_length = intval(sizeof($posts));
-block back
 block archive-header
 	#home.home-cell.mdl-cell.mdl-cell--12-col
 		.gxn-card.mdl-card.mdl-shadow--2dp

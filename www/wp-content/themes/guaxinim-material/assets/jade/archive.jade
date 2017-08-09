@@ -4,8 +4,6 @@ prepend header
 append styles
 	link(rel="stylesheet", href!=css("pages/archive/archive.css"))
 block main
-	block back
-		.mdl-cell.mdl-cell--12-col
 	block archive-header
 	block archive-content
 		- foreach( $posts as $post ):

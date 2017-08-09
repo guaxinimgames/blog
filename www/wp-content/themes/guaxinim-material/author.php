@@ -39,7 +39,6 @@ wp_reset_query(); ?>
         <div class="main-grid mdl-grid"><?php $posts_total = intval(count_user_posts(get_the_author_id(),'post'));
 $posts_length = intval(sizeof($posts));
 $author = get_the_author_id(); ?>
-          <div class="mdl-cell mdl-cell--12-col"></div>
           <div class="mdl-cell mdl-cell--12-col">
             <div id="author-card" class="gxn-card mdl-card mdl-shadow--2dp"><?php //- Get the author background
 if(get_field('is_image', 'user_'. get_the_author_id())) {

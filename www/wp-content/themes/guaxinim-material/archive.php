@@ -35,8 +35,7 @@ wp_reset_query(); ?>
     </div>
     <div id="wrapper">
       <main id="main" tabindex="-1" role="main" class="mdl-layout__content">
-        <div class="main-grid mdl-grid">
-          <div class="mdl-cell mdl-cell--12-col"></div><?php foreach( $posts as $post ): ?><?php setup_postdata($post) ?>
+        <div class="main-grid mdl-grid"><?php foreach( $posts as $post ): ?><?php setup_postdata($post) ?>
               <div class="post-card mdl-cell">
                 <div class="mdl-card hover mdl-shadow--2dp"><?php $img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
 	if(is_array($img)) {
